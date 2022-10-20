@@ -65,8 +65,9 @@
 	border-right: 2px solid transparent;
 	border-top: 10px solid #2B3B64;
 	position: relative;
-	left: 59px;
+	left: 60px;
     top: -26px;
 	transform: rotate(90deg);
     scale: 0;
+    border-radius: 1px;
 }
