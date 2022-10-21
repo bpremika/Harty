@@ -1,0 +1,76 @@
+.boxContainer{
+    display: flex;
+    flex-direction: column;
+    width : 722px;
+    height: 388px;
+    background-color:#16213E ;
+    border-radius:30px;
+    align-items: center;
+}
+
+.input{
+    width:100%;
+    height: 52px;
+    border-radius: 20px;
+    background-color: #2B3B64;
+    font-weight:700;
+    border-style: none;
+    font-size: 20px;
+    color: #ffffff;
+    padding-left: 10px;
+
+}
+
+.inputContainer{
+    padding: 50px 50px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+.input::placeholder{
+    color: #ffffff;
+    
+}
+
+
+.btn{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.forgotPass{
+    color: #ffffff;
+    font-weight: 700;
+
+}
+
+.joinBtn{
+    background-color: #E94560;
+    width: 180px;
+    height: 54px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    cursor: pointer;
+    border-style: none;
+}
+
+.joinBtn:hover{
+    background-color: #BD3249;
+}
+
+.checkboxContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+}
+.checkbox{
+    color:#ffffff;
+}
