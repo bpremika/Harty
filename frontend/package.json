@@ -18,7 +18,8 @@
     "react-datepicker": "^4.8.0",
     "react-datetime-picker": "^4.0.1",
     "react-dom": "18.2.0",
-    "react-time-picker": "^5.0.0"
+    "react-time-picker": "^5.0.0",
+    "@heroicons/react": "^2.0.12"
   },
   "devDependencies": {
     "@types/node": "18.11.0",
