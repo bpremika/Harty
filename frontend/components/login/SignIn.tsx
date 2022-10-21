@@ -22,7 +22,7 @@ const SignIn = () =>{
         <form className={styles.boxContainer} onSubmit = {formHandler}>
             <div className={styles.inputContainer}>
                 <input ref={usernameInputElement} className={styles.input} type="Username" placeholder="Username"/>
-                <input ref={passwordInputElement}className={styles.input} type="Password" placeholder="Password"/>
+                <input ref={passwordInputElement} className={styles.input} type="Password" placeholder="Password"/>
             </div>
             <div className={styles.checkboxContainer}>
                     <label className={styles.checkbox} htmlFor="remember">
