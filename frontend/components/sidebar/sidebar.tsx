@@ -1,9 +1,6 @@
 import styles from '../../styles/sidebar.module.css'
 import { HomeIcon, GlobeAmericasIcon, BookOpenIcon, UserGroupIcon } from '@heroicons/react/20/solid'
 
-
-
-
 const SideBar = () => {
     return (
         <div className={styles.sidebar}>
