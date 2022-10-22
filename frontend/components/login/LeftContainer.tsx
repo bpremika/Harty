@@ -1,9 +1,7 @@
-
-
 const LeftContainer = () => {
     return <>
-        <div className="container-box" style={{display:"flex", maxWidth : 522+"px" ,maxHeight : 100+"vh", backgroundColor : "#16213E"}}>
-            <h1 style={{}}>Welcome</h1>
+        <div className="container-box" style={{display:"flex", width : "40%" ,height : 100+"vh", backgroundColor : "#16213E",justifyContent:"center",alignItems:"center"}}>
+            <h1 style={{fontFamily : 'Poppins' ,fontSize: 45,color:"#FFFFFF"}}>Welcome</h1>
         </div>
     </>
 }

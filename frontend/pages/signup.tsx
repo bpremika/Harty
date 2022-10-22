@@ -8,7 +8,7 @@ import SignUp from '../components/login/Signup'
 
 import styles from '../styles/Login.module.css'
 const Login = () =>{
-    const [isFliped,setFliped] = useState(false);
+    const [isFliped,setFliped] = useState(true);
 
     return <div className={styles.container}>
         <Head>
@@ -20,8 +20,8 @@ const Login = () =>{
             <div className={styles.loginContainer}>
                 <ReactCardFlip isFlipped={isFliped} 
                 flipDirection="horizontal">
-                <LoginCard title='Sign In' hasAccount="Don't have an account?" url="/login" asUrl="/signup" onHasAccountClick={()=>setFliped(v=>!v)}><SignIn /></LoginCard>
-                <LoginCard title='Create an account' hasAccount="Already have an account?" url="/login" asUrl="/login" onHasAccountClick={()=>setFliped(v=>!v)}><SignUp/></LoginCard>
+                <LoginCard title='Sign In' hasAccount="Don't have an account?" url="/signup" asUrl="/signup" onHasAccountClick={()=>setFliped(v=>!v)}><SignIn /></LoginCard>
+                <LoginCard title='Create an account' hasAccount="Already have an account?" url="/signup" asUrl="/login" onHasAccountClick={()=>setFliped(v=>!v)}><SignUp/></LoginCard>
                 </ReactCardFlip>
             </div>
     </div>

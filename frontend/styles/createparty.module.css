@@ -1,0 +1,28 @@
+.bigcardcontainer {
+    padding: 10px;
+    width: 850px;
+    height: 600px;
+    background-color: #16213E;
+    color: white;
+    border-radius: 15px;
+    align-items: center;
+    text-align: center;
+}
+
+.smallcardcontainer {
+    color: white;
+    padding: 10px;
+    margin: 15px;
+    width: 800px;
+    height: 500px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    display: flex;
+    justify-content: right;
+    padding-top: 20px;
+    text-align: center;
+}
