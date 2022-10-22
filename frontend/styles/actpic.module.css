@@ -2,6 +2,9 @@
     border-radius: 30px;
     height: 260px;
     width: 179px;
+    object-fit: cover;
+    
+    
 
 }
 .button {

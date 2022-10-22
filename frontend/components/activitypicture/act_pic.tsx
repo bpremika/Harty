@@ -14,7 +14,7 @@ const Actpic = (props : Picture) =>{
     return (<>
     
     
-    <Tooltip style = {{paddingLeft : "2%",paddingRight : "2%"}} label = {props.name} withArrow transition="pop-top-right" closeDelay = {200} > 
+    <Tooltip style = {{paddingLeft : "2%",paddingRight : "2%", fontFamily : "Poppins"}} label = {props.name} withArrow transition="pop-top-right" closeDelay = {200} > 
         <button  className = {styles.button} >
             
             <img className = {styles.img} src = {props.URL} alt = {props.name}  />
