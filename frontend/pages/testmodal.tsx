@@ -1,11 +1,11 @@
-import Card from '../components/common/Card'
+import Modal from '../components/common/Modal'
 import styles from '../styles/cardmodal.module.css'
 
 const t={
     title : "Jett revive me",
     topic : "Valorant",
     image : "/valorant.png",
-    info : `สวัสดีครับคิดอยู่ว่าต้องทนไหวจะทุกข์จะทนเท่าไรความรักจะพาหัวใจไปคิดเองว่าต้องทนไหวแต่ยิ่งทุกข์ยิ่งทนเท่าไรความรักที่มียิ่งหายไป
+    info : `สวัสดีครับคิด    อยู่ว่าต้องทนไหวจะทุกข์จะทนเท่าไรความรักจะพาหัวใจไปคิดเองว่าต้องทนไหวแต่ยิ่งทุกข์ยิ่งทนเท่าไรความรักที่มียิ่งหายไป
     จะโทษดินจะโทษน้ำ
     จะโทษเดือนและดาว
     กับเรื่องราวที่ปวดร้าว
@@ -37,7 +37,7 @@ const t={
 const testr = () => {
     return <>
         <div className={styles.cardbackground}>
-                <Card title={t.title} topic={t.topic} isPublic={t.isPublic} image={t.image} info={t.info} tag={t.tag} numpeople={t.numpeople} maxpeople={t.maxpeople} time={t.time}
+                <Modal title={t.title} topic={t.topic} isPublic={t.isPublic} image={t.image} info={t.info} tag={t.tag} numpeople={t.numpeople} maxpeople={t.maxpeople} time={t.time}
                 master={t.master} />
             </div>
     </>
