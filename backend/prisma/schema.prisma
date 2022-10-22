@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id         Int      @id @default(autoincrement())
+  username   String   @unique
+  email      String   @unique
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  party      Party[]
+}
+
+model Party {
+  id             Int      @id @default(autoincrement())
+  partyname      String   @db.VarChar(255)
+  activity       String   @db.VarChar(255)
+  is_private     Boolean  @default(false)
+  tag1           String   
+  tag2           String
+  tag3           String
+  game           Games    @relation(fields: [gameId], references: [id])
+  gameId         Int
+  member         Int
+  current_member Int
+  img_url        String
+  start_time     DateTime 
+  end_time       DateTime
+  date           DateTime 
+  private_desc   String   @db.VarChar(500)
+  public_desc    String   @db.VarChar(500)
+  user           Users[]
+}
+
+model Games {
+  id       Int      @id @default(autoincrement())
+  name     String   @unique
+  img_url  String
+  category Category
+  party    Party[]
+}
+
+enum Category {
+  OnlineGame
+  OutdoorActivity
+}
+
+model thumbnail {
+  id      Int    @id @default(autoincrement())
+  name    String 
+  img_url String
+  link    String
+}
