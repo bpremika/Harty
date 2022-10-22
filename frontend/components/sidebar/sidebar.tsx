@@ -17,8 +17,6 @@ const SideBar = () => {
             <SideBarIcon text = "My Party">
                 <UserGroupIcon />
             </SideBarIcon>
-
-
         </div>
     )
 }

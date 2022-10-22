@@ -27,7 +27,7 @@ const SignIn = () =>{
             <div className={styles.checkboxContainer}>
                     <label className={styles.checkbox} htmlFor="remember">
                         <input ref = {toRememberInputElement} type="checkbox"/>
-                        Remember me</label>
+                        Remember me?</label>
                     <a className={styles.forgotPass} href="">Forgot Password?</a>
                 </div>
             <div className={styles.btn}>
