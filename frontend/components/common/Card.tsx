@@ -1,3 +1,4 @@
+import { StyleRegistry } from 'styled-jsx';
 import style from  '../../styles/card.module.css';
 
 interface Props{
