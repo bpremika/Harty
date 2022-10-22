@@ -1,8 +1,8 @@
 .boxContainer{
     display: flex;
     flex-direction: column;
-    width : 100%;
-    height: 350px;
+    width : 722px;
+    height: 388px;
     background-color:#16213E ;
     border-radius:30px;
     align-items: center;
@@ -10,12 +10,12 @@
 
 .input{
     width:100%;
-    height: 46px;
+    height: 52px;
     border-radius: 20px;
     background-color: #2B3B64;
-    font-weight:500;
+    font-weight:700;
     border-style: none;
-    font-size: 16px;
+    font-size: 20px;
     color: #ffffff;
     padding-left: 10px;
 
@@ -26,7 +26,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
     align-items: center;
 }
 .input::placeholder{
@@ -46,16 +46,15 @@
 .forgotPass{
     color: #ffffff;
     font-weight: 700;
-    font-size: 14px;
 
 }
 
 .joinBtn{
     background-color: #E94560;
-    width: 150px;
+    width: 180px;
     height: 54px;
     border-radius: 30px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 800;
     color: #ffffff;
     cursor: pointer;
@@ -74,5 +73,4 @@
 }
 .checkbox{
     color:#ffffff;
-    font-size: 14px;
 }
