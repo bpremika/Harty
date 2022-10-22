@@ -3,7 +3,7 @@ import { LockClosedIcon,LockOpenIcon} from '@heroicons/react/20/solid'
 import { StyleRegistry } from 'styled-jsx';
 
 interface Props{
-    title : string,
+    title : string;
     topic : string;
     image : string;
     info : string;
@@ -15,6 +15,7 @@ interface Props{
     master:string;
     date:string;
     starttime:string;
+    endtime:string;
 }
 const Modal=(data:Props)=>{
     return <>
@@ -58,16 +59,21 @@ const Modal=(data:Props)=>{
                         <div className={style.master}>โดย   {data.master}</div>
                 </div>
                 <div className={style.timendate}>
+                        <div className={style.starttime}>{data.starttime}-{data.endtime}</div>
                         <div className={style.date}>{data.date}</div>
-                        <div className={style.starttime}>{data.starttime}</div>
                 </div>
-                <div>
+                <div className={style.partysizenjoinbutton}>
                     <div className={style.partysize}>
-                        {data.numpeople}/{data.maxpeople}
+                        {data.numpeople}/{data.maxpeople} คน
                     </div>
-                    <button className={style.joinbutton}>
-                          {style.join}
-                    </button>
+                        {data.isPublic ?  
+                        <>
+                                <div className={style.joinbutton}>JOIN PARTY</div>
+                            </>
+                        :<>
+                                <div className={style.joinbutton}>REQUEST TO JOIN</div>
+                            </>
+                        }
                 </div>
             </div>
         </div>

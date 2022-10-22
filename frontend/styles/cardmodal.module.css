@@ -166,7 +166,7 @@
     margin-top:16px;
 }
 
-.date{
+.starttime{
     display: flex;
     align-self: center;
     background-color: #D9D9D9;
@@ -177,9 +177,32 @@
     border-radius: 30px;
 
 }
-.starttime{
+.date{
     display: flex;
     align-self: center;
     margin-left: 25px;
     color: white;
+}
+.partysizenjoinbutton{
+    display:flex;
+    flex-direction: column;
+    margin-top:197px;
+}
+.partysize{
+    margin-left: 156px;
+    font: 24px;
+    font-weight: 700;
+}
+.joinbutton{
+    margin-top: 10px;
+    margin-left: 30px;
+    background-color: #E94560;
+    color: black;
+    align-self: center;
+    padding:20px;
+    padding-left: 50px;
+    padding-right:50px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 30px;
 }

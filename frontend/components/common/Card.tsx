@@ -2,7 +2,7 @@ import { StyleRegistry } from 'styled-jsx';
 import style from  '../../styles/card.module.css';
 
 interface Props{
-    title : string,
+    title : string;
     topic : string;
     image : string;
     info : string;
@@ -11,9 +11,7 @@ interface Props{
     maxpeople : number;
     time:number;
     isPublic:boolean;
-    master:string;
-    date:string;
-    join:string;
+    
 }
 
 const Card = (data:Props) => {
