@@ -7,15 +7,13 @@
     border-radius: 30px;
     display: flex;
     font-family: 'Prompt', sans-serif;
+    gap:27px;
 }
 
 .left{
     margin-left:39px;
     margin-right: 0;
     margin-top: 36px;
-}
-.rigth{
-    margin:27px;
 }
 .cardtitle{
     color:white;
@@ -57,13 +55,14 @@
 .topic{
     font-size: 16px;
     font-weight: 700;
-    margin-left: 52px;
     margin-bottom: 10px;
+    margin-top:13px;
+    color: white;
 }
 .title{
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 700;
-    margin-left: 40px;
+    color: white;
 }
 .infobox{
     background-color: #2B3B64;
@@ -76,8 +75,8 @@
     padding: 18px;
     transition-property: all;
     transition-duration: 0.5s;
-
-
+    
+    
 }
 
 .tag{
@@ -101,7 +100,7 @@
     height:212px;
     border-radius: 30%;
     align-self: center;
-
+    
 }
 .cardbackground{
     background-color:red;
@@ -129,11 +128,58 @@
 
 .statusnmaster{
     display: flex;
-
+    color: white;
+    
 }
 
 .icon{
     width:20px;
     height:20px;
+    color: white;
+    display: flex;
+    align-self: center;
+    margin-right:8px;
+}
+
+.right{
+    margin-top: 59px;
+    margin-right: 36px;
+
+}
+
+.partystatus{
+    font-weight: 700;
+    font-size: 14px;
+}
+
+
+.master{
+    font-weight: 500;
+    font-size: 13px;
+    margin-left:8px ;
+    display: flex;
+    align-self:center ;
+}
+
+.timendate{
+    display:flex;
+    margin-top:16px;
+}
+
+.date{
+    display: flex;
+    align-self: center;
+    background-color: #D9D9D9;
+    padding: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 16px;
+    border-radius: 30px;
+
+}
+.starttime{
+    display: flex;
+    align-self: center;
+    margin-left: 25px;
     color: white;
 }

@@ -13,9 +13,11 @@
 }
 .card:hover{
     background-color: #233462;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .card:hover > .infobox{
     background-color: #3e558a;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 }
 .cardtop{

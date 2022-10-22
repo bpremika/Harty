@@ -32,13 +32,15 @@ const t={
     time:1,
     isPublic:true,
     master:"Inwpun",
+    starttime:"14:05",
+    date:"01/01/2021",
 }
 
 const testr = () => {
     return <>
         <div className={styles.cardbackground}>
                 <Modal title={t.title} topic={t.topic} isPublic={t.isPublic} image={t.image} info={t.info} tag={t.tag} numpeople={t.numpeople} maxpeople={t.maxpeople} time={t.time}
-                master={t.master} />
+                master={t.master} date={t.starttime} starttime={t.date} />
             </div>
     </>
 }

@@ -1,5 +1,6 @@
 import style from '../../styles/cardmodal.module.css'
 import { LockClosedIcon,LockOpenIcon} from '@heroicons/react/20/solid'
+import { StyleRegistry } from 'styled-jsx';
 
 interface Props{
     title : string,
@@ -13,7 +14,7 @@ interface Props{
     isPublic:boolean;
     master:string;
     date:string;
-    join:string;
+    starttime:string;
 }
 const Modal=(data:Props)=>{
     return <>
@@ -44,21 +45,21 @@ const Modal=(data:Props)=>{
                             <div className={style.icon}>
                                 <LockOpenIcon />
                             </div>
-                                <div>กลุ่มสาธารณะ</div>
+                                <div className={style.partystatus}>กลุ่มสาธารณะ</div>
                             </>
                         : <>
                             <div className={style.icon}>
                                 <LockClosedIcon />
                             </div>
-                                <div>กลุ่มส่วนตัว</div>
+                                <div className={style.partystatus}>กลุ่มส่วนตัว</div>
                             </>
                         }
                         
-                        <div>{data.master}</div>
+                        <div className={style.master}>โดย   {data.master}</div>
                 </div>
                 <div className={style.timendate}>
-                        <div>{data.time}</div>
-                        <div>{data.date}</div>
+                        <div className={style.date}>{data.date}</div>
+                        <div className={style.starttime}>{data.starttime}</div>
                 </div>
                 <div>
                     <div className={style.partysize}>
