@@ -10,38 +10,58 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
+model User {
   id         Int      @id @default(autoincrement())
-  username   String   @unique
+  username   String   @unique 
   email      String   @unique
   password   String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   party      Party[]
+  joinRequest  JoinRequest[]
+  session    Session[] 
+  @@index([username])
 }
 
+model JoinRequest {
+  id      Int   @id @default(autoincrement())
+  user    User @relation(fields: [userID], references: [id])
+  userID  Int
+  party   Party @relation(fields: [partyID], references: [id])
+  partyID Int   
+}
+
+model Session{
+  id      String @id @default(uuid())
+  user    User   @relation(fields: [userID], references: [id])
+  userID  Int
+  create_at DateTime @default(now())
+}
 model Party {
-  id             Int      @id @default(autoincrement())
-  partyname      String   @db.VarChar(255)
-  activity       String   @db.VarChar(255)
-  is_private     Boolean  @default(false)
-  tag1           String   
+  id             Int          @id @default(autoincrement())
+  partyname      String       @db.VarChar(255)
+  masterID       Int
+  is_public      Boolean      @default(true)
+  tag1           String
   tag2           String
   tag3           String
-  game           Games    @relation(fields: [gameId], references: [id])
-  gameId         Int
+  activity       Activity     @relation(fields: [activityname], references: [name])
+  activityname   String
   member         Int
-  current_member Int
+  current_member Int          @default(1)
   img_url        String
-  start_time     DateTime 
+  created_at     DateTime     @default(now())
+  updated_at     DateTime     @updatedAt
+  start_time     DateTime
   end_time       DateTime
-  date           DateTime 
-  private_desc   String   @db.VarChar(500)
-  public_desc    String   @db.VarChar(500)
-  user           Users[]
+  date           DateTime
+  private_desc   String       @db.VarChar(500)
+  public_desc    String       @db.VarChar(500)
+  user           User[]
+  joinRequest    JoinRequest[]
 }
 
-model Games {
+model Activity {
   id       Int      @id @default(autoincrement())
   name     String   @unique
   img_url  String
@@ -54,9 +74,9 @@ enum Category {
   OutdoorActivity
 }
 
-model thumbnail {
+model Thumbnail {
   id      Int    @id @default(autoincrement())
-  name    String 
+  name    String
   img_url String
   link    String
 }
