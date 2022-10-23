@@ -209,9 +209,16 @@ export const joinParty = async (req: Request, res: Response) => {
       res.status(401).json({ message: "session error" });
       return;
     }
-    const party = await prisma.party.findUnique({ where: { id: partyid } });
+    const party = await prisma.party.findUnique({
+      where: { id: partyid },
+      include: { user: true },
+    });
     if (party == null) {
       res.status(400).json({ message: "party not found" });
+      return;
+    }
+    if (party.user.find((v) => v.id == session.userID) !== undefined) {
+      res.status(400).json({ message: "user already in party" });
       return;
     }
     if (party.current_member >= party.member) {
@@ -227,6 +234,6 @@ export const joinParty = async (req: Request, res: Response) => {
     });
     res.status(200).json({ message: "join party successful" });
   } catch (error) {
-    res.status(400).json({ message: "user already in party" });
+    res.status(400).json({ message: "something went wrong" });
   }
 };
