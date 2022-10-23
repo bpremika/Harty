@@ -63,7 +63,7 @@ export interface CreateParty{
     privateDesc:string;
 }
 
-export interface JoinRequest{
+export interface JoinParty{
     partyid: number;
     userid: number;
     username : string;
