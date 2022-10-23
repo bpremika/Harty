@@ -75,26 +75,15 @@ const outdoor =[{name : "Camping" , URL : "https://eastwestbank.com/ReachFurther
 
 
  function catalog(props : Prop){
-    // interface ShowMoreProp{
-    //     children : string;
-    // }
+    interface ShowMoreProp{
+        children : Picture[];
+    }
     
-    // const ShowMore = ({children} : ShowMoreProp) =>{
-    //     const text = children;
-    //     const [isShowMore, setIsShowMore]  =useState(true);
-    //     const click = () =>{
-    //         setIsShowMore(!isShowMore);
-    //     };
-    //     return (
-    //         <h1 className = "text">
-    //             {isShowMore ? text.slice(0,6) : text}
-    //             <span onClick={click} className="read-or-hide">
-    //                 {isShowMore ? "Show more ᐯ" : "Show less ^"}
-    //             </span>
-    //         </h1>
 
-    //     )
-    // }
+
+
+
+
     const [isShowMoreG,setShowG] = useState(false)
     function showhideG(){
         setShowG(!isShowMoreG);
@@ -120,38 +109,11 @@ const outdoor =[{name : "Camping" , URL : "https://eastwestbank.com/ReachFurther
                                 <Actpic  name = {v.name} URL = {v.URL} linking = {v.linking}/>
                             </div>
                             ))) 
-                            :    (<div style={{display : "flex" , flexWrap : "wrap"}}>
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic1[0].name} URL = {props.pic1[0].URL} linking = {props.pic1[0].linking}/>
-                                        </div>      
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic1[1].name} URL = {props.pic1[1].URL} linking = {props.pic1[1].linking}/>
-                                        </div>     
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic1[2].name} URL = {props.pic1[2].URL} linking = {props.pic1[2].linking}/>
-                                        </div>  
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic1[3].name} URL = {props.pic1[3].URL} linking = {props.pic1[3].linking}/>
-                                        </div> 
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic1[4].name} URL = {props.pic1[4].URL} linking = {props.pic1[4].linking}/>
-                                        </div> 
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic1[5].name} URL = {props.pic1[5].URL} linking = {props.pic1[5].linking}/>
-                                        </div> 
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic1[6].name} URL = {props.pic1[6].URL} linking = {props.pic1[6].linking}/>
-                                        </div> 
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic1[7].name} URL = {props.pic1[7].URL} linking = {props.pic1[7].linking}/>
-                                        </div>            
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic1[8].name} URL = {props.pic1[8].URL} linking = {props.pic1[8].linking}/>
-                                        </div> 
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic1[9].name} URL = {props.pic1[9].URL} linking = {props.pic1[9].linking}/>
-                                        </div>                        
-                                    </div>)
+                            : (props.pic1.slice(0,9).map((v,i)=>(
+                                <div style={{margin : "10px"}}>
+                                    <Actpic  name = {v.name} URL = {v.URL} linking = {v.linking}/>
+                                </div>
+                                )))
                         }
                     </div>
                         <div style={{margin : "auto"}}>
@@ -169,38 +131,11 @@ const outdoor =[{name : "Camping" , URL : "https://eastwestbank.com/ReachFurther
                                 <Actpic  name = {v.name} URL = {v.URL} linking = {v.linking}/>
                             </div>
                             ))) 
-                            :    (<div style={{display : "flex", flexWrap : 'wrap'}}>
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic2[0].name} URL = {props.pic2[0].URL}  linking = {props.pic2[0].linking}/>
-                                        </div>      
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic2[1].name} URL = {props.pic2[1].URL} linking = {props.pic2[1].linking}/>
-                                        </div>     
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic2[2].name} URL = {props.pic2[2].URL} linking = {props.pic2[2].linking}/>
-                                        </div>  
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic2[3].name} URL = {props.pic2[3].URL} linking = {props.pic2[3].linking}/>
-                                        </div> 
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic2[4].name} URL = {props.pic2[4].URL} linking = {props.pic2[4].linking}/>
-                                        </div> 
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic2[5].name} URL = {props.pic2[5].URL} linking = {props.pic2[5].linking}/>
-                                        </div> 
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic2[6].name} URL = {props.pic2[6].URL} linking = {props.pic2[6].linking}/>
-                                        </div> 
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic2[7].name} URL = {props.pic2[7].URL} linking = {props.pic2[7].linking}/>
-                                        </div>      
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic2[8].name} URL = {props.pic2[8].URL} linking = {props.pic2[8].linking}/>
-                                        </div>     
-                                        <div style={{margin : "10px"}}>
-                                            <Actpic  name = {props.pic2[9].name} URL = {props.pic2[9].URL} linking = {props.pic2[9].linking}/>
-                                        </div>                                 
-                                    </div>)
+                            :    (props.pic2.slice(0,9).map((v,i)=>(
+                                <div style={{margin : "10px"}}>
+                                    <Actpic  name = {v.name} URL = {v.URL} linking = {v.linking}/>
+                                </div>
+                                )))
                         }
                     </div>
                         <div style={{margin : "auto"}}>
