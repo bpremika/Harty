@@ -1,12 +1,16 @@
 import { prisma } from "../common/prisma";
 import {Request, Response} from "express"
-import { CreateParty, PartyCardDTO, PartyRoomDTO } from "../dto/party.dto";
+import { CreateParty, PartiesDTO, PartyCardDTO, PartyRoomDTO } from "../dto/party.dto";
 import { partySchema } from "../common/partyValidator"; 
-import { ValidationError } from "yup";
+import { number, ValidationError } from "yup";
 
 export const getOnePartyCard = async (req: Request, res: Response) => {
     const id = parseInt(req.params.id)
-    const party = await prisma.party.findUnique({ where: { id } ,include :{user:true}})
+    if (Number.isNaN(id)){
+      res.status(400).json({ message: 'Invalid ID' })
+      return
+    }
+    const party = await prisma.party.findUnique({ where: { id } ,include :{user:true, activity:true}})
     if (party === null) {
       res.status(404).send({ message: 'party not found' })
       return
@@ -15,7 +19,7 @@ export const getOnePartyCard = async (req: Request, res: Response) => {
     const partycardDto: PartyCardDTO = {
         id : party.id,
         title : party.partyname,
-        topic : party.activityname,
+        topic : party.activity.name,
         image : party.img_url,
         info : party.public_desc,
         tag : [party.tag1,party.tag2,party.tag3],
@@ -32,10 +36,88 @@ export const getOnePartyCard = async (req: Request, res: Response) => {
     res.status(200).json(partycardDto)
   
   }
+  export const getPartyPerActivity = async (req: Request, res: Response) => {
+    if (req.params.id==null ){
+        const parties = await prisma.party.findMany()
+        res.status(200).json(parties)
+    }
+    else{
+        try{
+          const activityID = parseInt(req.params.id as string)
+          if (Number.isNaN(activityID)){
+            res.status(400).json({ message: 'Invalid ID' })
+            return
+          }
+          const parties = await prisma.party.findMany({where: {activityID} , include:{activity:true,user:true} })
+          if (parties === null) {
+            res.status(404).json({ message: 'party not found' })
+            return
+          }
+          const partiesDto: PartiesDTO = {
+              total : parties.length,
+              parties : parties.map(party =>({
+                id : party.id,
+                title : party.partyname,
+                topic : party.activity.name,
+                image : party.img_url,
+                info : party.public_desc,
+                tag : [party.tag1,party.tag2,party.tag3],
+                numpeople : party.current_member,
+                maxpeople : party.member,
+                time: party.created_at,
+                isPublic: party.is_public,
+                master:party.user.find(u => u.id == party.masterID)!.username,
+                date:party.date,
+                starttime:party.start_time,
+                endtime:party.end_time
+              }))
+          }
+        
+          res.status(200).json(partiesDto)
+        }catch(error){
+          res.status(400).json({message :"activityID must be number!"})
+        }
+    }
+  }
+
+  export const getManyPartyCards = async (req: Request, res: Response) => {
+    const parties = await prisma.party.findMany({include :{user:true ,activity:true}})
+    if (parties === null) {
+      res.status(404).json({ message: 'party not found' })
+      return
+    }
+  
+    const partiesDto: PartiesDTO = {
+        total : parties.length,
+        parties : parties.map(party =>({
+          id : party.id,
+          title : party.partyname,
+          topic : party.activity.name,
+          image : party.img_url,
+          info : party.public_desc,
+          tag : [party.tag1,party.tag2,party.tag3],
+          numpeople : party.current_member,
+          maxpeople : party.member,
+          time: party.created_at,
+          isPublic: party.is_public,
+          master:party.user.find(u => u.id == party.masterID)!.username,
+          date:party.date,
+          starttime:party.start_time,
+          endtime:party.end_time
+        }))
+    }
+  
+    res.status(200).json(partiesDto)
+  
+  }
 
   export const getPartyRoom = async (req: Request, res: Response) => {
     const id = parseInt(req.params.id)
-    const party = await prisma.party.findUnique({ where: { id } ,include :{user:true}})
+    if (Number.isNaN(id)){
+      res.status(400).json({ message: 'Invalid ID' })
+      return
+    }
+    const party = await prisma.party.findUnique({ where: { id } ,include :{user:true , activity:true}})
     if (party === null) {
       res.status(404).send({ message: 'party not found' })
       return
@@ -44,7 +126,7 @@ export const getOnePartyCard = async (req: Request, res: Response) => {
     const partyroomDto: PartyRoomDTO = {
       id : party.id,
       title : party.partyname,
-      topic : party.activityname,
+      topic : party.activity.name,
       image : party.img_url,
       info : party.public_desc,
       tag : [party.tag1,party.tag2,party.tag3],
@@ -68,20 +150,25 @@ export const createParty =async (req:Request,res:Response) => {
     try {
         const parsedParty = partySchema.validateSync(party)
         const {tag1,tag2,tag3,date} = parsedParty
+        const session = await prisma.session.findUnique({where:{id:req.session.token}})
+        if (session == null || session == undefined){
+          res.status(401).json({"message": "session error"})
+          return
+        }
         const newParty = await prisma.party.create({data:{
         partyname:parsedParty.title
         ,is_public :parsedParty.isPublic
         ,img_url : parsedParty.image
-        ,masterID : parsedParty.masterid
-        ,activityname:parsedParty.topic
+        ,masterID : session.userID
+        ,activityID:parsedParty.topicID
         ,start_time:parsedParty.starttime
         ,end_time:parsedParty.endtime
         ,tag1,tag2,tag3
-        ,updated_at : new Date()
-        ,member : parsedParty.maxpeople
         ,date
+        ,member : parsedParty.maxpeople
         ,public_desc: parsedParty.info
         ,private_desc: parsedParty.privateDesc
+        ,user : {connect:[{id:session.userID}]}
         }})
         res.status(200).json({"message" : "create party successful"})
     } catch (error) {

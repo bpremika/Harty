@@ -45,8 +45,8 @@ model Party {
   tag1           String
   tag2           String
   tag3           String
-  activity       Activity     @relation(fields: [activityname], references: [name])
-  activityname   String
+  activity       Activity     @relation(fields: [activityID], references: [id])
+  activityID     Int
   member         Int
   current_member Int          @default(1)
   img_url        String

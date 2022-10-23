@@ -17,3 +17,8 @@ export const getActivityCards = async (req: Request, res: Response) => {
         res.status(404).json({message :"Not found"})
     }
 }
+
+export const getThumbnails =async (req:Request,res:Response) => {
+    const thumbnail = await prisma.thumbnail.findMany()
+    res.status(200).json(thumbnail)
+}

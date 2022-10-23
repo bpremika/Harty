@@ -2,7 +2,9 @@ import express from "express";
 import { createParty } from "./controllers/party.controller";
 import sessions from "express-session"
 import cookieParser from "cookie-parser"
-import { getActivityCards } from "./controllers/other.controller";
+import { getActivityCards, getThumbnails } from "./controllers/other.controller";
+import { partyRouter } from "./routes/party.route";
+import { userRouter } from "./routes/user.route";
 
 const app = express();
 
@@ -14,13 +16,21 @@ app.use(sessions({
     cookie: { maxAge: oneDay },
     resave: false
 }))
+declare module "express-session" {
+  interface Session {
+    token: string;
+  }
+}
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.json());
 
-app.get("/activities",getActivityCards);
-app.post("/",createParty);
 
+app.get("/activities",getActivityCards);
+app.get("/thumbnail", getThumbnails);
+
+app.use("/",userRouter);
+app.use("/party",partyRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on http://localhost:${port}`);
