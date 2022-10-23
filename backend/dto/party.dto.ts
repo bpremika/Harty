@@ -1,3 +1,5 @@
+import { User } from "@prisma/client";
+
 export interface PartyCardDTO{
     id : number;
     title : string;
@@ -7,14 +9,18 @@ export interface PartyCardDTO{
     tag : string[];
     numpeople : number;
     maxpeople : number;
+    master : string;
     time: Date;
     isPublic:boolean;
-    master:string;
     date:Date;
     starttime:Date;
     endtime:Date;
 }
 
+export interface PartiesDTO {
+    total: number
+    parties : PartyCardDTO[]
+  }
 export interface PartyRoomDTO{
     id :number;
     title : string;
@@ -24,36 +30,37 @@ export interface PartyRoomDTO{
     tag : string[];
     numpeople : number;
     maxpeople : number;
+    master : string;
     time: Date;
     isPublic:boolean;
-    master:string;
     date: Date;
     starttime: Date;
     endtime:Date;
     privateDesc:string;
     members : string[];
 }
-
+export interface ActivitywithID{
+    id: number;
+    topic : string;
+}
 export interface CreatePartyCard{
-    activity : string[];
+    topics : ActivitywithID[];
 }
 
 export interface CreateParty{
     title : string;
-    topic : string;
+    topicID : number;
     image : string;
     info : string;
     tag1 : string;
     tag2 :string;
     tag3 :string;
-    numpeople : number;
     maxpeople : number;
     isPublic:boolean;
-    master:string;
     date:Date;
     starttime:Date;
     endtime:Date;
-    privateDesc:Date;
+    privateDesc:string;
 }
 
 export interface JoinRequest{
