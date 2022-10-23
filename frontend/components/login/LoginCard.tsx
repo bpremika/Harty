@@ -13,8 +13,8 @@ interface LoginProp{
 const LoginCard = (props:LoginProp) =>{
     const router = useRouter();
     return <>
-        <div style={{display: "flex", alignItems :"center", justifyContent:"center" ,flexDirection:"column", width : "min(50vw,600px)", height:700}}>
-            <h2 style={{fontSize : 30}}>{props.title}</h2>
+        <div style={{display: "flex", alignItems :"center", justifyContent:"center" ,flexDirection:"column", width : "min(50vw,500px)", height:700}}>
+            <h2 style={{fontSize : 26}}>{props.title}</h2>
             {props.children}
             <div style={{width: "100%",display:"flex",justifyContent:"right"}}>
                 <button onClick={()=>{

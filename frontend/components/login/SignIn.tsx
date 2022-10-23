@@ -2,7 +2,10 @@ import React, { useCallback, useRef } from 'react';
 import styles from '../../styles/Signin.module.css'
 const SignIn = () =>{
     console.log("##Refreshing")
-
+    const test = {
+        username: "bolona",
+        password: "123456"
+    }
     const usernameInputElement = useRef<HTMLInputElement>(null);
     const passwordInputElement = useRef<HTMLInputElement>(null);
     const toRememberInputElement = useRef<HTMLInputElement>(null);
@@ -15,7 +18,13 @@ const SignIn = () =>{
             toRemember : toRememberInputElement.current?.value
         }
         console.log(data)
+
+        if ((data.username == test.username) && (data.password == test.password)){
+            
+        }
     }
+
+
     
 
     return <>
