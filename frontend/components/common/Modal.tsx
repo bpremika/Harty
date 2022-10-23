@@ -1,5 +1,5 @@
 import style from '../../styles/cardmodal.module.css'
-import { LockClosedIcon,LockOpenIcon} from '@heroicons/react/20/solid'
+import { LockClosedIcon,LockOpenIcon,XMarkIcon} from '@heroicons/react/20/solid'
 import { StyleRegistry } from 'styled-jsx';
 
 interface Carddto{
@@ -18,12 +18,16 @@ interface Carddto{
     endtime:string;
 }
 interface Props{
-    data:Carddto;}
+    data:Carddto;
+    close:()=>void;    
+}
+
+
 const Modal=(props:Props)=>{
-    return <>
+    return <div className={style.transparentback}>
         <div className={style.card}>
             <div className={style.left}>
-                <div className={style.imagebox}><img  className={style.cardimage}src={props.data.image} /></div>
+                <div className={style.imagebox}><img className={style.cardimage} src={props.data.image} /></div>
                 <div className={style.tagnparty}>
                 <div className={style.tagsize}>
                         {props.data.tag.map((v,i)=>(<div key={i} className={style.tag}>
@@ -40,6 +44,9 @@ const Modal=(props:Props)=>{
 
                 </div>
             <div className={style.right}>
+                <div className={style.close} onClick={()=>props.close()}>
+                    <XMarkIcon />
+                </div>
                 <div className={style.title}>{props.data.title}</div>
                 <div className={style.topic}>{props.data.topic}</div>
                 <div className={style.statusnmaster}>
@@ -79,7 +86,7 @@ const Modal=(props:Props)=>{
                 </div>
             </div>
         </div>
-    </>
+    </div>
 }
 
 export default Modal;

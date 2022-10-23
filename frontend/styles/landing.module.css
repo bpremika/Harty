@@ -8,6 +8,8 @@
     flex-wrap: wrap;
     padding-top:20px;
     padding-bottom:20px;
+    position: relative;
+    margin:0;
 }
 
 .objectcard{
@@ -16,4 +18,16 @@
     width: fit-content;
     height: fit-content;
     margin:15px;
+}
+.transparentback{
+    background-color: #16213E;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+    opacity: 50%;
+}
+
+.formodal{
+    z-index: 3;
 }

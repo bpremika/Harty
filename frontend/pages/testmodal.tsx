@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Modal from '../components/common/Modal'
 import styles from '../styles/cardmodal.module.css'
 
@@ -54,10 +55,11 @@ const t={
 }
 
 const testr = () => {
+    const [modalID,setModalID] = useState<number | null>(null);
+    
     return <>
         <div className={styles.cardbackground}>
-                <Modal title={t.title} topic={t.topic} isPublic={t.isPublic} image={t.image} info={t.info} tag={t.tag} numpeople={t.numpeople} maxpeople={t.maxpeople} time={t.time}
-                master={t.master} date={t.date} starttime={t.starttime} endtime={t.endtime} />
+                <Modal data={t} close={()=>setModalID(null)} />
             </div>
     </>
 }
