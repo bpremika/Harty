@@ -12,14 +12,24 @@ export default function Test() {
             <Button onClick={() => {openModal({
             title: <span style={{
               fontWeight: "bold",
-              fontSize: "30px",
-              padding: "10px"
+              fontSize: "40px",
+              padding: "10px",
+              color: 'white',
+              marginLeft: '20px'
             }}>Create New Party</span>,
-            style: {borderColor: "black"},
             size: "auto",
             radius: 'lg',
             overflow: 'outside',
             closeButtonLabel: "Cancel",
+            overlayColor: 'black',
+            styles: {modal: {
+              backgroundColor: '#16213E',
+              borderRadius: '30px',
+              height: 'fit-content'
+            }, close: {
+              color: 'white',
+              marginRight: '20px'
+            }},
             children: (
                 <CreateNewParty/>
             ),

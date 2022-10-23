@@ -13,37 +13,49 @@ const DropZone = () => {
             key={index}
             src={imageUrl}
             height = {200}
-            width = {356}
+            width = {460}
             imageProps={{ onLoad: () => URL.revokeObjectURL(imageUrl) }}
-            radius = 'md'
+            radius = 'xl'
         />
         );
     });
 
     return (
         <div>
-        <Group position='center'>
+        <Group position='center' style={{
+            position: 'relative',
+            width: '460px',
+            height: '200px',
+            marginLeft: '10px'
+        }}>
+        <div style={{
+            width: '100%',
+            height: '100%',
+            marginTop: '20px',
+            backgroundColor: '#2B3B64',
+            borderRadius: '30px',
+            position: 'relative',
+        }}>
+            {previews}
+        </div>
+
         <Dropzone accept={IMAGE_MIME_TYPE} onDrop={setFiles} style = {{
             height: '60px',
+            top: '-150px',
+            position: 'relative',
+            opacity: '0.3',
+            backgroundColor: 'transparent',
         }}>
             <Group position='center' align='center'>
                 <IconPhotoPlus 
                     size={25}
-                    color = {'gray'}
+                    color = {'white'}
                 />
-                <Text align="center" color={'gray'}>Drop images here</Text>
+                <Text align="center" color={'white'}>Drop images here</Text>
             </Group>
         </Dropzone>
 
-        <div style={{
-            minHeight: "80%",
-            marginTop: '20px',
-            padding: '10px',
-            backgroundColor: 'white',
-            borderRadius: '10px'
-        }}>
-            {previews}
-        </div>
+        
         </Group>
         </div>
     )
