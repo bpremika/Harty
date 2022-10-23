@@ -6,7 +6,6 @@
     /* height: 554px; */
     border-radius: 30px;
     display: flex;
-    font-family: 'Prompt', sans-serif;
     gap:27px;
 }
 
@@ -186,7 +185,7 @@
 .partysizenjoinbutton{
     display:flex;
     flex-direction: column;
-    margin-top:197px;
+    margin-top:185px;
 }
 .partysize{
     margin-left: 156px;

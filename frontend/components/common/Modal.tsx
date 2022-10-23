@@ -2,7 +2,7 @@ import style from '../../styles/cardmodal.module.css'
 import { LockClosedIcon,LockOpenIcon} from '@heroicons/react/20/solid'
 import { StyleRegistry } from 'styled-jsx';
 
-interface Props{
+interface Carddto{
     title : string;
     topic : string;
     image : string;
@@ -17,31 +17,33 @@ interface Props{
     starttime:string;
     endtime:string;
 }
-const Modal=(data:Props)=>{
+interface Props{
+    data:Carddto;}
+const Modal=(props:Props)=>{
     return <>
         <div className={style.card}>
             <div className={style.left}>
-                <div className={style.imagebox}><img  className={style.cardimage}src={data.image} /></div>
+                <div className={style.imagebox}><img  className={style.cardimage}src={props.data.image} /></div>
                 <div className={style.tagnparty}>
                 <div className={style.tagsize}>
-                        {data.tag.map((v,i)=>(<div key={i} className={style.tag}>
+                        {props.data.tag.map((v,i)=>(<div key={i} className={style.tag}>
                             {v}
                         </div>))}
                 </div>
-                    <div className={style.time}>{data.time} mins ago</div>
+                    <div className={style.time}>{props.data.time} mins ago</div>
                 </div>
                 <div className={style.infobox}>
                     <p className={style.info}>
-                        {data.info}
+                        {props.data.info}
                     </p>
                 </div>
 
                 </div>
             <div className={style.right}>
-                <div className={style.title}>{data.title}</div>
-                <div className={style.topic}>{data.topic}</div>
+                <div className={style.title}>{props.data.title}</div>
+                <div className={style.topic}>{props.data.topic}</div>
                 <div className={style.statusnmaster}>
-                        {data.isPublic ?  
+                        {props.data.isPublic ?  
                         <>
                             <div className={style.icon}>
                                 <LockOpenIcon />
@@ -56,22 +58,22 @@ const Modal=(data:Props)=>{
                             </>
                         }
                         
-                        <div className={style.master}>โดย   {data.master}</div>
+                        <div className={style.master}>โดย   {props.data.master}</div>
                 </div>
                 <div className={style.timendate}>
-                        <div className={style.starttime}>{data.starttime}-{data.endtime}</div>
-                        <div className={style.date}>{data.date}</div>
+                        <div className={style.starttime}>{props.data.starttime}-{props.data.endtime}</div>
+                        <div className={style.date}>{props.data.date}</div>
                 </div>
                 <div className={style.partysizenjoinbutton}>
                     <div className={style.partysize}>
-                        {data.numpeople}/{data.maxpeople} คน
+                        {props.data.numpeople}/{props.data.maxpeople} คน
                     </div>
-                        {data.isPublic ?  
+                        {props.data.isPublic ?  
                         <>
-                                <div className={style.joinbutton}>JOIN PARTY</div>
+                                <button className={style.joinbutton}>JOIN PARTY</button>
                             </>
                         :<>
-                                <div className={style.joinbutton}>REQUEST TO JOIN</div>
+                                <button className={style.joinbutton}>REQUEST TO JOIN</button>
                             </>
                         }
                 </div>

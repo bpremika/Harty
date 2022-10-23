@@ -2,14 +2,14 @@
 
 .card{
     background-color:#16213E;
-    width:550px;
+    width: 323px;
     /* height: 554px; */
     border-radius: 30px;
     display: flex;
-    font-family: 'Prompt', sans-serif;
     flex-direction: column;
     transition-property:all;
     transition-duration:175ms;
+    margin:0;
 }
 .card:hover{
     background-color: #233462;
@@ -25,30 +25,28 @@
     justify-content: space-between;
    
 }
-.rigth{
-    margin:27px;
-}
+
 .cardtitle{
     color:white;
     display:flex;
     flex-direction:column;
     justify-content: space-between;
-    padding-top: 26px;
+    padding-top: 12px;
 }
 
 .tagnparty{
     display: flex;   
     justify-content: space-between;
-    margin-top: 15px;
-    margin-bottom:16px;
-    margin-left:56px;
-    margin-right: 56px;
+    margin-top: 12px;
+    margin-bottom:7px;
+    margin-left:32px;
+    margin-right: 32px;
     padding: 0;
 }
 .partysize{
     color:white;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 14px;
     display: flex;
     align-items: center;
 }
@@ -62,34 +60,34 @@
 .time{
     color: white;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 12px;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 37px;
+    margin-right: 24px;
 }
 
 .topic{
-    font-size: 16px;
+    font-size: 10px;
     font-weight: 700;
-    margin-left: 52px;
-    margin-bottom: 10px;
+    margin-left: 28px;
+    margin-bottom: 5px;
 }
 .title{
-    font-size: 24px;
+    font-size: 14px;
     font-weight: 700;
-    margin-left: 52px;
+    margin-left: 28px;
 }   
 .infobox{
     background-color: #2B3B64;
     color: white;
-    width: 463px;
-    height: 121px;
+    width: 278px;
+    height: 72px;
     border-radius: 30px;
     align-self: center;
     margin-bottom: 35px;
-    padding: 18px;
+    padding: 14px;
     transition-property: all;
     transition-duration: 175ms;
 
@@ -99,26 +97,26 @@
 .tag{
     background-color: #FFC814;
     border-radius: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin: 3px;
     color: black;
-    font-size: 12px;
+    font-size: 8px;
     font-weight: 600;
 }
 .cardimage{
     width: 100%;
     height: 100%;
     border-radius: 30px;
-    object-fit: contain;
+    object-fit: fill;
 }
 
 .imagebox{
-    width:463px;
-    height:212px;
-    border-radius: 30%;
+    width:278px;
+    height:115px;
+    border-radius: 30px;
     align-self: center;
 
 }
@@ -129,7 +127,7 @@
 }
 
 .info{
-    font-size: 20px;
+    font-size: 11px;
     font-weight: 400;
     /* padding:18px; */
     margin: 0;
@@ -138,8 +136,8 @@
     word-break: normal;
     position: relative;
     overflow: hidden;
-    line-height:26px;
-    max-height: calc(24.2px * 3);
+    line-height:15px;
+    max-height: calc(14px * 3);
     text-align: justify;
     /* padding-right: 1em; */
     /* font-family: "Inter", sans-serif !important; */

@@ -2,6 +2,7 @@ import { StyleRegistry } from 'styled-jsx';
 import style from  '../../styles/card.module.css';
 
 interface Props{
+    id: number;
     title : string;
     topic : string;
     image : string;
@@ -11,11 +12,13 @@ interface Props{
     maxpeople : number;
     time:number;
     isPublic:boolean;
+    clicker : () => void;
     
 }
 
 const Card = (data:Props) => {
-    return  <div className={style.card}>
+    return  (<>
+    <div className={style.card} onClick={() => data.clicker()}>
         <div className={style.cardtop}>
             <div className={style.cardtitle}>
                 <div className={style.title}>
@@ -43,7 +46,7 @@ const Card = (data:Props) => {
                 {data.info}
             </p>
         </div>
-    </div>
+    </div></>)
 }
 
 export default Card

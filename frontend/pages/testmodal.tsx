@@ -1,6 +1,22 @@
 import Modal from '../components/common/Modal'
 import styles from '../styles/cardmodal.module.css'
 
+
+interface Props{
+    title : string;
+    topic : string;
+    image : string;
+    info : string;
+    tag : string[];
+    numpeople : number;
+    maxpeople : number;
+    time:number;
+    isPublic:boolean;
+    master:string;
+    date:string;
+    starttime:string;
+    endtime:string;
+}
 const t={
     title : "Jett revive me",
     topic : "Valorant",

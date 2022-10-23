@@ -31,14 +31,12 @@ const t={
     maxpeople : 5,
     time:1,
     isPublic:true,
-    master:"Inwpun",
 }
 
 const testr = () => {
     return <>
         <div className={styles.cardbackground}>
-                <Card title={t.title} topic={t.topic} isPublic={t.isPublic} image={t.image} info={t.info} tag={t.tag} numpeople={t.numpeople} maxpeople={t.maxpeople} time={t.time}
-                master={t.master} />
+                <Card title={t.title} topic={t.topic} isPublic={t.isPublic} image={t.image} info={t.info} tag={t.tag} numpeople={t.numpeople} maxpeople={t.maxpeople} time={t.time}/>
             </div>
     </>
 }
