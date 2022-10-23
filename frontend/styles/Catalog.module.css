@@ -48,12 +48,14 @@
 }
 .show{
 
-    display: contents;
+    display: inline-flex;
     border: none;
     background-color: #19284D;
     color: white;
     font-size: 18px;
-    margin-left: 0px;
+    font-weight: bold;
+
+    
     
 }
 
