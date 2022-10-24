@@ -24,28 +24,30 @@ export const createUser = async (req: Request, res: Response) => {
   }
 };
 export const login = async (req: Request, res: Response) => {
-  const username = req.body.username;
-  if (username == null) {
-    res.status(401).json({ message: "username wrong!" });
-    return;
+  try {
+    const data = req.body;
+    const parsedUser = userSchema.validateSync(data);
+    const username = parsedUser.username;
+    const user = await prisma.user.findUnique({ where: { username } });
+    console.log(user);
+    if (user === null)
+      return res.status(404).json({ message: "don't have an account" });
+    const isPasswordValid = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
+    if (!isPasswordValid) {
+      res.status(401).json({ message: "password wrong" });
+      return;
+    }
+    const sessionData = await prisma.session.create({
+      data: { userID: user.id },
+    });
+    req.session.token = sessionData.id;
+    res.status(200).json({ message: "login successful" });
+  } catch (error) {
+    res.status(400).json({ message: "error" });
   }
-  const user = await prisma.user.findUnique({ where: { username } });
-  console.log(user);
-  if (user === null)
-    return res.status(404).json({ message: "don't have an account" });
-  const isPasswordValid = await bcrypt.compare(
-    req.body.password,
-    user.password
-  );
-  if (!isPasswordValid) {
-    res.status(401).json({ message: "password wrong" });
-    return;
-  }
-  const sessionData = await prisma.session.create({
-    data: { userID: user.id },
-  });
-  req.session.token = sessionData.id;
-  res.status(200).json({ message: "login successful" });
 };
 
 export const logout = async (req: Request, res: Response) => {
