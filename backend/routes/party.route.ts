@@ -15,6 +15,5 @@ partyRouter.get("/activitylist", getActivitylist);
 partyRouter.get("/:id", getOnePartyCard);
 partyRouter.get("/room/:id", getPartyRoom);
 partyRouter.get("/activity/:id", getPartyPerActivity);
-partyRouter.get("/activitylist", getActivitylist);
 partyRouter.post("/", createParty);
 partyRouter.post("/join/:id", joinParty);
