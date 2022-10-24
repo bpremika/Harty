@@ -37,6 +37,7 @@ const Card = (data:Props) => {
         return relativeFormatter.format(Math.trunc(diff.as(unit)), unit);
       };
       const mago = DateTime.fromISO(data.time);
+    
     return  (<>
     <div className={style.card} onClick={() => data.clicker()}>
         <div className={style.cardtop}>
