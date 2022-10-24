@@ -15,7 +15,6 @@ const SignIn = () =>{
         }
         console.log(data)
         try {
-            const body = JSON.stringify(data);
             const res = await axios.post("https://harty.onfirebyte.xyz/login", body);
             console.log(res.data);
           } catch (error) {
