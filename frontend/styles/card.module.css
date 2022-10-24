@@ -1,0 +1,148 @@
+
+
+.card{
+    background-color:#16213E;
+    width: 323px;
+    /* height: 554px; */
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    transition-property:all;
+    transition-duration:175ms;
+    margin:0;
+}
+.card:hover{
+    background-color: #233462;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card:hover > .infobox{
+    background-color: #3e558a;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+.cardtop{
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.cardtitle{
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    padding-top: 12px;
+}
+
+.tagnparty{
+    display: flex;   
+    justify-content: space-between;
+    margin-top: 12px;
+    margin-bottom:7px;
+    margin-left:32px;
+    margin-right: 32px;
+    padding: 0;
+}
+.partysize{
+    color:white;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+.tagsize{
+    display: flex;
+    margin-left: 0px;
+
+    
+}
+
+.time{
+    color: white;
+    font-weight: 400;
+    font-size: 12px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 24px;
+}
+
+.topic{
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: 28px;
+    margin-bottom: 5px;
+}
+.title{
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 28px;
+}   
+.infobox{
+    background-color: #2B3B64;
+    color: white;
+    width: 278px;
+    height: 72px;
+    border-radius: 30px;
+    align-self: center;
+    margin-bottom: 35px;
+    padding: 14px;
+    transition-property: all;
+    transition-duration: 175ms;
+
+
+}
+
+.tag{
+    background-color: #FFC814;
+    border-radius: 30px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin: 3px;
+    color: black;
+    font-size: 8px;
+    font-weight: 600;
+}
+.cardimage{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    object-fit: fill;
+}
+
+.imagebox{
+    width:278px;
+    height:115px;
+    border-radius: 30px;
+    align-self: center;
+
+}
+.cardbackground{
+    background-color:red;
+    width: 100vw;
+    height: 100vh;
+}
+
+.info{
+    font-size: 11px;
+    font-weight: 400;
+    /* padding:18px; */
+    margin: 0;
+    /* height: 100%; */
+    word-wrap: break-word;
+    word-break: normal;
+    position: relative;
+    overflow: hidden;
+    line-height:15px;
+    max-height: calc(14px * 3);
+    text-align: justify;
+    /* padding-right: 1em; */
+    /* font-family: "Inter", sans-serif !important; */
+    
+}
+
+
+

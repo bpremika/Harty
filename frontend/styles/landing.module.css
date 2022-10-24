@@ -1,0 +1,32 @@
+.base{
+    background-color: #0F172D;
+    align-content: flex-start;
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top:20px;
+    padding-bottom:20px;
+    position: relative;
+    margin:0;
+}
+
+.objectcard{
+    display: flex;
+    align-self: center;
+    width: fit-content;
+    height: fit-content;
+    margin:15px;
+}
+.transparentback{
+    background-color: #16213E;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+    opacity: 50%;
+}
+
+.formodal{
+    z-index: 3;
+}
