@@ -1,6 +1,6 @@
 import { StyleRegistry } from 'styled-jsx';
 import style from  '../../styles/card.module.css';
-
+import {DateTime} from 'luxon';
 interface Props{
     id: number;
     title : string;
@@ -10,13 +10,33 @@ interface Props{
     tag : string[];
     numpeople : number;
     maxpeople : number;
-    time:number;
+    time:string;
     isPublic:boolean;
     clicker : () => void;
     
 }
 
 const Card = (data:Props) => {
+    const units: Intl.RelativeTimeFormatUnit[] = [
+        'year',
+        'month',
+        'week',
+        'day',
+        'hour',
+        'minute',
+        'second',
+      ];
+      
+    const timeAgo = (dateTime: DateTime) => {
+        const diff = dateTime.diffNow().shiftTo(...units);
+        const unit = units.find((unit) => diff.get(unit) !== 0) || 'second';
+      
+        const relativeFormatter = new Intl.RelativeTimeFormat('en', {
+          numeric: 'auto',
+        });
+        return relativeFormatter.format(Math.trunc(diff.as(unit)), unit);
+      };
+      const mago = DateTime.fromISO(data.time);
     return  (<>
     <div className={style.card} onClick={() => data.clicker()}>
         <div className={style.cardtop}>
@@ -29,7 +49,7 @@ const Card = (data:Props) => {
                 </div>
             </div >
             <div className={style.time}>
-                {data.time} mins ago
+                {timeAgo(mago)}
             </div>
         </div>
         <div className={style.imagebox}><img  className={style.cardimage}src={data.image} /></div>
