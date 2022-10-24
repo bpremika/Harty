@@ -10,6 +10,7 @@ export const getActivitylist = async (req: Request, res: Response) => {
       return { id: e.id, topic: e.name };
     }),
   };
+  res.status(200).json(activitieswithID);
 };
 export const getActivityCards = async (req: Request, res: Response) => {
   const category = req.query.category as string | null;
