@@ -41,8 +41,8 @@ export function CardnModal(d:Lprops){
     
      <div className={st.base}>
     {d.data.map((e,i)=>{
-        return(<div className={st.objectcard}>
-                <Card key={i} id={e.id} title={e.title} topic={e.topic} image={e.image} info={e.info} tag={e.tag} 
+        return(<div className={st.objectcard} key={e.id}>
+                <Card id={e.id} title={e.title} topic={e.topic} image={e.image} info={e.info} tag={e.tag} 
                     numpeople={e.numpeople} maxpeople={e.maxpeople} time={e.time} isPublic={e.isPublic}
                     clicker={()=>setModalID(e.id)}/>
                     <div className={st.test}></div>

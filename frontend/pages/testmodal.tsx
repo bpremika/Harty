@@ -3,22 +3,8 @@ import Modal from '../components/common/Modal'
 import styles from '../styles/cardmodal.module.css'
 
 
-interface Props{
-    title : string;
-    topic : string;
-    image : string;
-    info : string;
-    tag : string[];
-    numpeople : number;
-    maxpeople : number;
-    time:number;
-    isPublic:boolean;
-    master:string;
-    date:string;
-    starttime:string;
-    endtime:string;
-}
 const t={
+    id:1,
     title : "Jett revive me",
     topic : "Valorant",
     image : "/valorant.png",
@@ -46,7 +32,7 @@ const t={
     tag : ["#RANK","#RANK"],
     numpeople : 1,
     maxpeople : 5,
-    time:1,
+    time:'1',
     isPublic:true,
     master:"Inwpun",
     starttime:"14:05",
@@ -54,7 +40,7 @@ const t={
     date:"01/01/2021",
 }
 
-const testr = () => {
+const Testr = () => {
     const [modalID,setModalID] = useState<number | null>(null);
     
     return <>
@@ -64,4 +50,4 @@ const testr = () => {
     </>
 }
 
-export default testr;
+export default Testr;
