@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { getActivitylist } from "../controllers/other.controller";
 import {
   createParty,
   getManyPartyCards,
@@ -13,5 +14,6 @@ partyRouter.get("/", getManyPartyCards);
 partyRouter.get("/:id", getOnePartyCard);
 partyRouter.get("/room/:id", getPartyRoom);
 partyRouter.get("/activity/:id", getPartyPerActivity);
+partyRouter.get("/activitylist", getActivitylist);
 partyRouter.post("/", createParty);
 partyRouter.post("/join/:id", joinParty);
