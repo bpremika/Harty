@@ -1,14 +1,15 @@
 import { prisma } from "../common/prisma";
 import { Request, Response } from "express";
 import { Category } from "@prisma/client";
-import { ActivitywithID } from "../dto/party.dto";
+import { ActivitywithID, CreatePartyCard } from "../dto/party.dto";
 
 export const getActivitylist = async (req: Request, res: Response) => {
   const activities = await prisma.activity.findMany();
-  const activitylist = activities.map((e) => {
-    return { id: e.id, topic: e.name };
-  });
-  res.status(200).json(activitylist);
+  const activitieswithID: CreatePartyCard = {
+    topics: activities.map((e) => {
+      return { id: e.id, topic: e.name };
+    }),
+  };
 };
 export const getActivityCards = async (req: Request, res: Response) => {
   const category = req.query.category as string | null;
