@@ -1,23 +1,26 @@
+import axios from 'axios';
 import React, { useCallback, useRef } from 'react';
 import styles from '../../styles/Signin.module.css'
 const SignIn = () =>{
     console.log("##Refreshing")
-
     const usernameInputElement = useRef<HTMLInputElement>(null);
     const passwordInputElement = useRef<HTMLInputElement>(null);
     const toRememberInputElement = useRef<HTMLInputElement>(null);
 
-    const formHandler = (event :React.FormEvent) =>{ 
+    const formHandler = async (event :React.FormEvent) =>{ 
         event.preventDefault()
         const data = {
             username : usernameInputElement.current?.value,
             password : passwordInputElement.current?.value,
-            toRemember : toRememberInputElement.current?.value
         }
         console.log(data)
+        try {
+            const res = await axios.post("https://harty.onfirebyte.xyz/login", data);
+            console.log(res.data);
+          } catch (error) {
+            console.error(error);
+          }
     }
-    
-
     return <>
         <form className={styles.boxContainer} onSubmit = {formHandler}>
             <div className={styles.inputContainer}>

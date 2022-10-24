@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { ChangeEvent, useState } from "react"
 import styles from "../../styles/Signup.module.css"
 
@@ -7,8 +8,7 @@ const SignUp = () => {
         username: "",
         email: "",
         password: "",
-        password2: "",
-        isAccept: ""
+        password2: ""
 
     })
 
@@ -16,9 +16,9 @@ const SignUp = () => {
         username: "",
         email: "",
         password: "",
-        password2: "",
-        isAccept: ""
+        password2: ""
       })
+    
     
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -67,10 +67,23 @@ const SignUp = () => {
             return stateObj;
           });
     }
-    const { username, email, password, password2 ,isAccept } = formData;
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const { username, email, password, password2} = formData;
+    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-    }
+        const newUser = {
+          username,
+          email,
+          password,
+        };
+        try {
+          const res = await axios.post("https://harty.onfirebyte.xyz/register", newUser);
+          console.log(res.data);
+          
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    
     return <>
         <form className={styles.boxContainer} onSubmit={onSubmit}>
             <div className={styles.inputContainer}>
@@ -101,5 +114,5 @@ const SignUp = () => {
             </div>
         </form>
     </>
-}
+};
 export default SignUp
