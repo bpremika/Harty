@@ -46,7 +46,7 @@ export const login = async (req: Request, res: Response) => {
     req.session.token = sessionData.id;
     res.status(200).json({ message: "login successful" });
   } catch (error) {
-    res.status(400).json({ message: "error" });
+    res.status(400).json({ message: error });
   }
 };
 
