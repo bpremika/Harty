@@ -1,7 +1,7 @@
 import { prisma } from "../common/prisma";
 import { Request, response, Response } from "express";
 import { CreateUser, User } from "../dto/users.dto";
-import { userSchema } from "../common/UserValidator";
+import { loginSchema, userSchema } from "../common/UserValidator";
 import { ValidationError } from "yup";
 import bcrypt from "bcrypt";
 
@@ -26,7 +26,7 @@ export const createUser = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
   try {
     const data = req.body;
-    const parsedUser = userSchema.validateSync(data);
+    const parsedUser = loginSchema.validateSync(data);
     const username = parsedUser.username;
     const user = await prisma.user.findUnique({ where: { username } });
     console.log(user);
