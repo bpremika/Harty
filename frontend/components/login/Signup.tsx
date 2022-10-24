@@ -76,8 +76,7 @@ const SignUp = () => {
           password,
         };
         try {
-          const body = JSON.stringify(newUser);
-          const res = await axios.post("https://harty.onfirebyte.xyz/register", body);
+          const res = await axios.post("https://harty.onfirebyte.xyz/register", newUser);
           console.log(res.data);
           
         } catch (error) {
