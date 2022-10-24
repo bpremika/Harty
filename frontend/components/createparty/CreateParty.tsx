@@ -6,7 +6,32 @@ import { IconPhotoPlus } from '@tabler/icons';
 import { closeAllModals } from '@mantine/modals'
 import { CalendarIcon, ClockIcon} from '@heroicons/react/20/solid'
 import { useForm } from '@mantine/form'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+interface activityProps {
+    value: string,
+    label: string,
+}
+interface CreateNewPartyProps {
+    activity: activityProps[]
+}
+interface formData {
+    isPublic: boolean,
+    title: string,
+    topicID: string,
+    image: string,
+    info: string,
+    tag1: string,
+    tag2: string,
+    tag3: string,
+    numPeople: number,
+    maxPeople: number,
+    master: string,
+    date: Date,
+    startTime: Date,
+    endTime: Date,
+    privateDes: string,
+}
 
 
 const useStyles = createStyles((theme) => ({
@@ -17,24 +42,18 @@ const useStyles = createStyles((theme) => ({
     },
 }))
 
-interface activityProps {
-    value: string,
-    label: string,
-}
-interface CreateNewPartyProps {
-    activity: activityProps[]
-}
-
 const CreateNewParty = (props: CreateNewPartyProps) => {
     
     const { classes } = useStyles();
 
     const [date, setDate] = useState(new Date())
+
     const now = new Date()
     const then = new Date()
     const [time, setValue] = useState<[Date, Date]>([now, then])
 
     const [files, setFiles] = useState<FileWithPath[]>([])
+
     const previews = files.map((file, index) => {
         const imageUrl = URL.createObjectURL(file);
         return (
@@ -55,11 +74,20 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
         }
     }
 
+    async function formHandle(data: formData) {
+        try {
+            const res = await axios.post('https://harty.onfirebyte.xyz/party/',data)
+            console.log(data)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     const form = useForm({
         initialValues: {
             isPublic: '',
             title: '',
-            topic: '',
+            topicID: '',
             image: '',
             info: '',
             tag1: '',
@@ -75,13 +103,13 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
         },
         validate: {
             title: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
-            topic: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
+            topicID: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
             isPublic: (value) => (value.length == 0 ? 'Please Select Party Type' : null),
             tag1: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
         },
         transformValues: (values) => ({
             title: values.title,
-            topic: values.topic,
+            topicID: values.topicID,
             image: values.image,
             info: values.info,
             tag1: values.tag1,
@@ -91,9 +119,9 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
             maxPeople: Number(values.maxPeople),
             isPublic: values.isPublic == "public",
             master: values.master,
-            date: JSON.stringify(date),
-            startTime: JSON.stringify(time[0]),
-            endTime: JSON.stringify(time[1]),
+            date: date,
+            startTime: time[0],
+            endTime: time[1],
             privateDes: values.privateDes
         }),
         
@@ -101,7 +129,7 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
 
     return (
         <div className={styles.bigcardcontainer}>
-            <form onSubmit={form.onSubmit((values) => console.log(values))}>
+            <form onSubmit={form.onSubmit((values) => formHandle(values))}>
                 <div className={styles.smallcardcontainer}>
                     <div className={styles.topflex}>
                         <div className={styles.dropzone}>
@@ -151,7 +179,7 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
                                 <div className={styles.time}>
                                     <Select classNames={{
                                         input: classes.input
-                                    }} size = 'xs' radius = 'xl' label={<p style={{color: 'white'}}>Select Activity</p>} placeholder='Activities' data = {props.activity} {...form.getInputProps('topic')} />
+                                    }} size = 'xs' radius = 'xl' label={<p style={{color: 'white'}}>Select Activity</p>} placeholder='Activities' data = {props.activity} {...form.getInputProps('topicID')} />
                                     <Select classNames={{
                                         input: classes.input
                                     }} size='xs' radius = 'xl' label={<p style={{color: 'white'}}>Party Type</p>} placeholder='Type' data = {[{value: 'private', label: 'Private'}, {value: 'public', label: 'Public'}]} {...form.getInputProps('isPublic')}/>
@@ -233,4 +261,29 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
         </div>
     )
 }
-export default CreateNewParty
+
+const NewParty = () => {
+
+    const [activities, setActivities] = useState([]);
+
+    function fetchActivity() {
+        axios.get('https://harty.onfirebyte.xyz/party/activitylist').then(res => {
+            setActivities(res.data)
+        })
+    }
+
+    useEffect(() => {
+        fetchActivity()
+    },[])
+
+    useEffect(() => {
+        console.log(activities)
+    },[activities])
+
+    return <>
+            {activities.length == 0 ? <div style={{color: 'white'}}>loading</div> : <CreateNewParty activity = {activities} />}
+        </>
+
+}
+
+export default NewParty

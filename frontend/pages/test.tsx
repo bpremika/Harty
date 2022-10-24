@@ -25,11 +25,11 @@ export default function Test() {
               backgroundColor: '#16213E',
               borderRadius: '30px',
             }, close: {
-              color: 'white',
-              marginRight: '20px'
+              color: '#2B3B64',
+              marginRight: '20px',
             }},
             children: (
-                <CreateNewParty activity = {[{label: 'PUBG', value: 'pubg'}]}/>
+                <CreateNewParty/>
             ),
           })
         }}
