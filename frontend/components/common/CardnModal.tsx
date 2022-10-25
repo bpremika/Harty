@@ -1,6 +1,6 @@
 import Modal from "./Modal";
 import Card from "./Card";
-import st from '../styles/landing.module.css';
+import st from '../../styles/landing.module.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -32,23 +32,24 @@ interface Lprops{
 
 export function CardnModal(d:Lprops){
     const [modalID,setModalID] = useState<number | null>(null);
-    return <>
-    {modalID && <div className={st.formodal}>
-        <Modal data={d.data.find(v=>v.id==modalID)!} close={()=>setModalID(null)}/>
-        <div className={st.transparentback}>
-        </div>
-    </div> }
     
-     <div className={st.base}>
-    {d.data.map((e,i)=>{
-        return(<div className={st.objectcard} key={e.id}>
-                <Card id={e.id} title={e.title} topic={e.topic} image={e.image} info={e.info} tag={e.tag} 
-                    numpeople={e.numpeople} maxpeople={e.maxpeople} time={e.time} isPublic={e.isPublic}
-                    clicker={()=>setModalID(e.id)}/>
-                    <div className={st.test}></div>
-            </div>)
-    })}
-    </div>
+    return <>
+        {modalID && <div className={st.formodal}>
+            <Modal data={d.data.find(v=>v.id==modalID)!} close={()=>setModalID(null)}/>
+            <div className={st.transparentback}>
+            </div>
+        </div> }
+        
+        <div className={st.base}>
+        {d.data.map((e,i)=>{
+            return(<div className={st.objectcard} key={e.id}>
+                    <Card id={e.id} title={e.title} topic={e.topic} image={e.image} info={e.info} tag={e.tag} 
+                        numpeople={e.numpeople} maxpeople={e.maxpeople} time={e.time} isPublic={e.isPublic}
+                        clicker={()=>setModalID(e.id)}/>
+                        <div className={st.test}></div>
+                </div>)
+        })}
+        </div>
     </>
 }
 

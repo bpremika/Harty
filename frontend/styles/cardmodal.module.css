@@ -118,7 +118,7 @@
     word-wrap: break-word;
     word-break: normal;
     position: relative;
-    overflow: scroll;
+    overflow: auto; 
     line-height: 30px;
     max-height: calc(30px * 6);
     text-align: justify;
