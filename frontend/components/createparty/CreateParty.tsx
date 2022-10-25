@@ -44,8 +44,9 @@ const useStyles = createStyles((theme) => ({
     },
 }))
 
+
 const CreateNewParty = (props: CreateNewPartyProps) => {
-    
+
     const { classes } = useStyles();
 
     const [date, setDate] = useState(new Date())
@@ -78,7 +79,7 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
 
     async function formHandle(data: formData) {
         try {
-            const res = await axios.post('https://harty.onfirebyte.xyz/party/',data)
+            //const res = await axios.post('https://harty.onfirebyte.xyz/party/',data)
             console.log(data)
         } catch (error) {
             console.error(error)
@@ -282,8 +283,10 @@ const NewParty = () => {
         console.log(activities)
     },[activities])
 
+    let actlist= activities.map(({id, topic}) => ({value: id,label: topic}))
+
     return <>
-            {activities.length == 0 ? <div style={{color: 'white'}}>loading</div> : <CreateNewParty activity = {activities} />}
+            {activities.length == 0 ? <div style={{color: 'white'}}>loading</div> : <CreateNewParty activity={actlist}/>}
         </>
 
 }
