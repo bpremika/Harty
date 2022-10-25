@@ -1,7 +1,6 @@
 .bigcardcontainer {
-    padding: 10px;
-    width: 850px;
-    height: 600px;
+    width: fit-content;
+    height: fit-content;
     background-color: #16213E;
     color: white;
     border-radius: 15px;
@@ -11,18 +10,77 @@
 
 .smallcardcontainer {
     color: white;
-    padding: 10px;
     margin: 15px;
-    width: 800px;
-    height: 500px;
+    width: fit-content;
+    height: fit-content;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    background-color: #16213E;
 }
 
 .button {
+    width: 360px;
     display: flex;
     justify-content: right;
-    padding-top: 20px;
     text-align: center;
+    margin-bottom: 5px;
+}
+
+.description {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 10px;
+}
+
+.topflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.time {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: right;
+    padding: 10px;
+}
+
+.activity {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: right;
+    padding: 10px;
+}
+
+.dropzone {
+    width: fit-content;
+    margin: 0px 20px;
+}
+
+.ptype {
+    padding: 10px;
+}
+
+.publicdes {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 20px;
+}
+
+.privatedes {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 20px;
+}
+
+.topright {
+    display: flex;
+    flex-direction: row;
+    margin: 0px 20px;
 }
