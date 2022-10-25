@@ -27,7 +27,10 @@
 }
 .feed{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+.feed{
+  display: flex;
   justify-content: center;
   align-items: center;
 
