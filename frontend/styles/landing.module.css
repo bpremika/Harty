@@ -1,7 +1,9 @@
 .base{
     background-color: #0F172D;
     align-content: flex-start;
+    justify-content: center;
     display: flex;
+    overflow: auto;
     height: 100vh;
     flex-direction: row;
     flex-wrap: wrap;
