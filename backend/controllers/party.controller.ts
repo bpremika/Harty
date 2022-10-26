@@ -9,6 +9,7 @@ import {
 } from "../dto/party.dto";
 import { partySchema } from "../common/partyValidator";
 import { number, ValidationError } from "yup";
+import session from "express-session";
 
 export const getOnePartyCard = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
@@ -43,6 +44,29 @@ export const getOnePartyCard = async (req: Request, res: Response) => {
   };
 
   res.status(200).json(partycardDto);
+};
+
+export const getPartyPerUsers = async (req: Request, res: Response) => {
+  try {
+    const session = await prisma.session.findUnique({
+      where: { id: req.session.token },
+      include: {
+        user: {
+          include: {
+            party: true,
+          },
+        },
+      },
+    });
+    if (session == null || session == undefined) {
+      res.status(401).json({ message: "session error" });
+      return;
+    }
+    const parties = session.user.party;
+    res.status(200).json(parties);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 };
 export const getPartyPerActivity = async (req: Request, res: Response) => {
   if (req.params.id == null) {
