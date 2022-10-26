@@ -10,7 +10,7 @@ const app = express();
 const port = Number.parseInt(process.env.PORT ?? "3000");
 
 const corsOptions: cors.CorsOptions = {
-    origin: "https://harty.vercel.app",
+    origin: "*",
     allowedHeaders: "Origin, Content-Type, Accept",
     credentials: true,
 };
