@@ -33,6 +33,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #16213E;
 }
 .footer {
   display: flex;
