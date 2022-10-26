@@ -9,7 +9,7 @@
 }
 .navbar {
   height: 64px;
-  width: 100vw;
+  width: 100%;
   position: absolute;
   background-color: #2B3B64;
   color: white;
@@ -27,13 +27,12 @@
 }
 .feed{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .feed{
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .footer {
   display: flex;

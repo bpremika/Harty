@@ -52,9 +52,8 @@ const MyParty = () => {
                         </Button>
                     </div>
                     <div className={styles.upcomming}>
-                        <h2 style={{margin: '0px'}}>Joined Party</h2>
                         <div className={styles.upcommingcard}>
-                            <PartyCards path='me' />
+                            <PartyCards path='party/myparty' />
                         </div>
                     </div>
                 </div>

@@ -15,10 +15,8 @@ const Explore = () => {
                 <div className={styles.navbar}>
                     <h1 style={{marginLeft: '79px'}}>Explore</h1>
                 </div>
-                <div className={styles.content}>
-                    <div style = {{width: '80%', borderRadius: '30px'}}>
-                        <PartyCards path='party/'/>
-                    </div>
+                <div className={styles.feed}>
+                    <PartyCards path='party/'/>
                 </div>
                 <SideBar />
             </main>

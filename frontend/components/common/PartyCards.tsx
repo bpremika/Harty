@@ -31,7 +31,8 @@ const PartyCards = (props:PartyCardProps) =>{
     
     function fetchallparties(){
 
-            axios.get(`https://harty.onfirebyte.xyz/${props.path}`).then(res=>{
+            axios.get(`https://harty.onfirebyte.xyz/${props.path}`, {withCredentials: true}).then(res=>{
+            console.log(res.data)
             setparties(res.data);
         }).catch(e=>console.log(e)
         )

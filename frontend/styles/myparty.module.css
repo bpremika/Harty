@@ -5,6 +5,7 @@
 .createparty {
     position: absolute;
     right: 0px;
+    z-index: 10;
 }
 .navbar {
     height: 64px;

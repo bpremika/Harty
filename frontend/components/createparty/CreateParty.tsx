@@ -26,9 +26,7 @@ interface formData {
     tag1: string,
     tag2: string,
     tag3: string,
-    numPeople: number,
     maxPeople: number,
-    master: string,
     date: Date,
     startTime: Date,
     endTime: Date,
@@ -73,13 +71,21 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
     
     function handleSubmit() {
         if (form.isValid()) {
-            closeAllModals()
+            //closeAllModals()
         }
     }
 
     async function formHandle(data: formData) {
         try {
-            //const res = await axios.post('https://harty.onfirebyte.xyz/party/',data)
+            const res = await fetch("https://harty.onfirebyte.xyz/party",{
+                method: "post",
+                credentials: 'include',
+                body: JSON.stringify(data),
+            
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+            })
             console.log(data)
         } catch (error) {
             console.error(error)
@@ -96,9 +102,7 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
             tag1: '',
             tag2: '',
             tag3: '',
-            numPeople: 1,
             maxPeople: 2,
-            master: '',
             date: '',
             startTime: '',
             endTime: '',
@@ -118,10 +122,8 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
             tag1: values.tag1,
             tag2: values.tag2,
             tag3: values.tag3,
-            numPeople: Number(values.numPeople),
             maxPeople: Number(values.maxPeople),
             isPublic: values.isPublic == "public",
-            master: values.master,
             date: date,
             startTime: time[0],
             endTime: time[1],
@@ -270,7 +272,7 @@ const NewParty = () => {
     const [activities, setActivities] = useState([]);
 
     function fetchActivity() {
-        axios.get('https://harty.onfirebyte.xyz/party/activitylist').then(res => {
+        axios.get('https://harty.onfirebyte.xyz/party/activitylist', {withCredentials: true}).then(res => {
             setActivities(res.data)
         })
     }
@@ -283,7 +285,7 @@ const NewParty = () => {
         console.log(activities)
     },[activities])
 
-    let actlist= activities.map(({id, topic}) => ({value: id,label: topic}))
+    let actlist = activities.map(({id, topic}) => ({value: id,label: topic}))
 
     return <>
             {activities.length == 0 ? <div style={{color: 'white'}}>loading...</div> : <CreateNewParty activity={actlist}/>}

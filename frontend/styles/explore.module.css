@@ -1,4 +1,6 @@
 .main {
+    display: flex;
+    flex-direction: row;
     background-color: #16213E;
 }
 .navbar {
@@ -13,7 +15,20 @@
 }
 .content{
     position: absolute;
-    top: 99px;
-    left: 99px;
-    right: 35px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.feed{
+    margin-top: 99px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+    width: 90%;
+    margin-right: 35px;
+    margin-left: 99px;
 }

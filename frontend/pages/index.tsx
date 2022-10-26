@@ -7,6 +7,8 @@ import { CardnModal } from '../components/common/CardnModal'
 import PartyCards from '../components/common/PartyCards'
 import Category from '../components/category/Category'
 import {useRef} from 'react'
+import Profile from '../components/common/Profile'
+import Profilesmall from '../components/common/Profilesmall'
 
 const Home: NextPage = () => {
   const ref1 = useRef<null | HTMLDivElement>(null); 
@@ -27,27 +29,29 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className={styles.navbar}>
             <h1 style={{marginLeft: '79px'}}>Home</h1>
+            <div style={{width: '50px', height: '50px', position: 'absolute', right: '10px'}}>
+              <Profilesmall user = "Bruce" image = "https://cdn.discordapp.com/attachments/1028683592450199593/1034873681492574320/unknown.png"/>
             </div>
+        </div>
         <div>
           <SideBar />
         </div>
         <div className={styles.rightContainer}>
           <div className={styles.navbarplaceholder}>
           </div>
-          <Category/>
           <div className={styles.feed}>
             <Category onGameClick={() => {handleGameClick()}} onActClick={() => {handleActClick()}}/>
             <div ref = {ref2} style = {{backgroundColor: 'white', margin: '20px 0px', marginTop: '36px', height: '36px', width: '80%', borderRadius: '30px'}}>
               <h2 style={{color: 'black', margin: '0px 0px', marginLeft: '10px'}}>Online Game</h2>
             </div>
             <div style={{width: '80%', borderRadius: '30px'}}>
-              <PartyCards path='party/'/>
+              <PartyCards path='party/category?category=OnlineGame'/>
             </div>
             <div ref = {ref1} style = {{backgroundColor: 'white', margin: '20px 0px', height: '36px', width: '80%', borderRadius: '30px'}}>
               <h2 style={{color: 'black', margin: '0px 0px', marginLeft: '10px'}}>Outdoor Activities</h2>
             </div>
             <div style={{width: '80%', borderRadius: '30px'}}>
-              <PartyCards path='party/'/>
+              <PartyCards path='party/category?category=OutdoorActivity'/>
             </div>
           </div>
         </div>
