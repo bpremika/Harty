@@ -50,6 +50,23 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
+export const userBio = async (req: Request, res: Response) => {
+  try {
+    const session = await prisma.session.findUnique({
+      where: { id: req.session.token },
+      include: {
+        user: true,
+      },
+    });
+    if (session == null || session == undefined) {
+      res.status(401).json({ message: "session error" });
+      return;
+    }
+    res.status(200).json(session.user.username);
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+};
 export const logout = async (req: Request, res: Response) => {
   try {
     await prisma.session.delete({ where: { id: req.session.token } });
