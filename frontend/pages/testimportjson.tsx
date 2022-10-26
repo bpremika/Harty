@@ -42,7 +42,7 @@ function A(d:Lprops){
         </div>
     </div> }
     
-     <div className={st.base}>
+    <div className={st.base}>
     {d.data.map((e,i)=>{
         return(<div className={st.objectcard} key={e.id}>
                 <Card id={e.id} title={e.title} topic={e.topic} image={e.image} info={e.info} tag={e.tag} 
