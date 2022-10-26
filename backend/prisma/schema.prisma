@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  username   String   @unique 
+  email      String   @unique
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  party      Party[]
+  joinRequest  JoinRequest[]
+  session    Session[] 
+  @@index([username])
+}
+
+model JoinRequest {
+  id      Int   @id @default(autoincrement())
+  user    User @relation(fields: [userID], references: [id])
+  userID  Int
+  party   Party @relation(fields: [partyID], references: [id])
+  partyID Int   
+}
+
+model Session{
+  id      String @id @default(uuid())
+  user    User   @relation(fields: [userID], references: [id])
+  userID  Int
+  create_at DateTime @default(now())
+}
+model Party {
+  id             Int          @id @default(autoincrement())
+  partyname      String       @db.VarChar(255)
+  masterID       Int
+  is_public      Boolean      @default(true)
+  tag1           String
+  tag2           String
+  tag3           String
+  activity       Activity     @relation(fields: [activityID], references: [id])
+  activityID     Int
+  member         Int
+  current_member Int          @default(1)
+  img_url        String
+  created_at     DateTime     @default(now())
+  updated_at     DateTime     @updatedAt
+  start_time     DateTime
+  end_time       DateTime
+  date           DateTime
+  private_desc   String       @db.VarChar(500)
+  public_desc    String       @db.VarChar(500)
+  user           User[]
+  joinRequest    JoinRequest[]
+}
+
+model Activity {
+  id       Int      @id @default(autoincrement())
+  name     String   @unique
+  img_url  String
+  category Category
+  party    Party[]
+}
+
+enum Category {
+  OnlineGame
+  OutdoorActivity
+}
+
+model Thumbnail {
+  id      Int    @id @default(autoincrement())
+  name    String
+  img_url String
+  link    String
+}

@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Party" ALTER COLUMN "current_member" SET DEFAULT 1;
+
+-- AlterTable
+ALTER TABLE "Session" ADD COLUMN     "create_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

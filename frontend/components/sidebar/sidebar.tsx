@@ -4,7 +4,12 @@ import { HomeIcon, GlobeAmericasIcon, BookOpenIcon, UserGroupIcon } from '@heroi
 const SideBar = () => {
     return (
         <div className={styles.sidebar}>
-            <img src='/hartyiconnobg.svg' />
+            <div style={{
+                height: '64px',
+                width: '64px'
+            }}>
+                <img src='/hartyiconnobg.svg' />
+            </div>
             <SideBarIcon text = "Home"> 
                 <HomeIcon />
             </SideBarIcon>
@@ -17,8 +22,6 @@ const SideBar = () => {
             <SideBarIcon text = "My Party">
                 <UserGroupIcon />
             </SideBarIcon>
-
-
         </div>
     )
 }
