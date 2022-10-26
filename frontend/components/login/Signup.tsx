@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { ChangeEvent, useState } from "react"
 import styles from "../../styles/Signup.module.css"
 import Router,{useRouter } from "next/router";
+import Popup from "../../pages/popout";
 const SignUp = () => {
 
     const [formData, setFormData] = useState({
@@ -75,11 +76,17 @@ const SignUp = () => {
           email,
           password,
         };
+        function tumihere(){
+            Router.push('/signup', '/login');  
+            Router.reload();
+        }
         try {
+
           const res = await axios.post("https://harty.onfirebyte.xyz/register", newUser);
           console.log(res.data);
-          Router.push('/signup','/login');
-          Router.reload();
+          const[isclose,Closeit] = useState(false);
+          <Popup is={()=>{Closeit(true)}}/>
+          {isclose===true? tumihere() : null}
         } catch (error) {
           console.error(error);
         }
