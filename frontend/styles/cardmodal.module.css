@@ -86,6 +86,9 @@
     margin: 5px;
     color: black;
     font-size: 12px;
+    min-width: 70px;
+    max-width: 100px;
+    text-align: center;
     font-weight: 600;
 }
 .cardimage{
@@ -206,6 +209,13 @@
     font-size: 20px;
     font-weight: 700;
     border-radius: 30px;
+    transition-property: all;
+    transition-duration: 200ms;
+}
+.joinbutton:hover{
+    color: white;
+    background-color: #c93b52;
+    cursor: pointer;
 }
 
 .close{
@@ -215,5 +225,5 @@
     display: flex;
     align-self: center;
     margin-right:8px;
-    margin-left:200px ;
+    margin-left:220px ;
 }

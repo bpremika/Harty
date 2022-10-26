@@ -8,8 +8,8 @@ import {
   PartyRoomDTO,
 } from "../dto/party.dto";
 import { partySchema } from "../common/partyValidator";
-import { number, ValidationError } from "yup";
-import session from "express-session";
+import { ValidationError } from "yup";
+import { Category } from "@prisma/client";
 
 export const getOnePartyCard = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
@@ -49,11 +49,13 @@ export const getOnePartyCard = async (req: Request, res: Response) => {
 export const getPartyPerUsers = async (req: Request, res: Response) => {
   try {
     const session = await prisma.session.findUnique({
-      where: { id: req.session.token },
+      where: { id: req.cookies.token },
       include: {
         user: {
           include: {
-            party: true,
+            party: {
+              include: { activity: true, user: true },
+            },
           },
         },
       },
@@ -63,9 +65,69 @@ export const getPartyPerUsers = async (req: Request, res: Response) => {
       return;
     }
     const parties = session.user.party;
+    const partiesDto: PartiesDTO = {
+      total: parties.length,
+      parties: parties.map((party) => ({
+        id: party.id,
+        title: party.partyname,
+        topic: party.activity.name,
+        image: party.img_url,
+        info: party.public_desc,
+        tag: [party.tag1, party.tag2, party.tag3],
+        numpeople: party.current_member,
+        maxpeople: party.member,
+        time: party.created_at,
+        isPublic: party.is_public,
+        master: party.user.find((u) => u.id == party.masterID)!.username,
+        date: party.date,
+        starttime: party.start_time,
+        endtime: party.end_time,
+      })),
+    };
     res.status(200).json(parties);
   } catch (error) {
     res.status(400).json(error);
+  }
+};
+export const getPartyPerCategory = async (req: Request, res: Response) => {
+  const category = req.query.category as string | null;
+  if (category == null || category == undefined) {
+    const party = await prisma.party.findMany();
+    res.status(200).json(party);
+  } else if (category in Category) {
+    const parties = await prisma.party.findMany({
+      where: {
+        activity: {
+          category: category as Category,
+        },
+      },
+      include: {
+        activity: true,
+        user: true,
+      },
+    });
+    const partiesDto: PartiesDTO = {
+      total: parties.length,
+      parties: parties.map((party) => ({
+        id: party.id,
+        title: party.partyname,
+        topic: party.activity.name,
+        image: party.img_url,
+        info: party.public_desc,
+        tag: [party.tag1, party.tag2, party.tag3],
+        numpeople: party.current_member,
+        maxpeople: party.member,
+        time: party.created_at,
+        isPublic: party.is_public,
+        master: party.user.find((u) => u.id == party.masterID)!.username,
+        date: party.date,
+        starttime: party.start_time,
+        endtime: party.end_time,
+      })),
+    };
+    res.status(200).json(partiesDto);
+  } else {
+    res.status(404).json({ message: "Not found" });
   }
 };
 export const getPartyPerActivity = async (req: Request, res: Response) => {
@@ -188,7 +250,7 @@ export const createParty = async (req: Request, res: Response) => {
     const parsedParty = partySchema.validateSync(party);
     const { tag1, tag2, tag3, date } = parsedParty;
     const session = await prisma.session.findUnique({
-      where: { id: req.session.token },
+      where: { id: req.cookies.token },
     });
     if (session == null || session == undefined) {
       res.status(401).json({ message: "session error" });
@@ -227,7 +289,7 @@ export const joinParty = async (req: Request, res: Response) => {
   }
   try {
     const session = await prisma.session.findUnique({
-      where: { id: req.session.token },
+      where: { id: req.cookies.token },
     });
     if (session == null || session == undefined) {
       res.status(401).json({ message: "session error" });
