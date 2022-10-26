@@ -84,7 +84,7 @@ export const getPartyPerUsers = async (req: Request, res: Response) => {
         endtime: party.end_time,
       })),
     };
-    res.status(200).json(parties);
+    res.status(200).json(partiesDto);
   } catch (error) {
     res.status(400).json(error);
   }
