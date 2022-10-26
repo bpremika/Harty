@@ -1,0 +1,33 @@
+.scope {
+    height: 174px;
+    width: 501px;
+    background-color: #19284D;
+    border-radius: 30px;
+}
+
+.leaveButton {
+    width: 156.4px; 
+    height: 34px;
+    background-color: #E94560;
+    border-radius: 30px;
+    color: #FFFFFF ;
+    font-family: Poppins;
+    font-size: 16px;
+    border: none;
+}
+
+.cancelButton {
+    width: 156.4px; 
+    height: 34px;
+    color: #FFFFFF;
+    font-family: Poppins;
+    font-size: 16px;
+    background-color: Transparent;
+    border: none;
+}
+
+.leaveText {
+    color: #FFFFFF;
+    font-family: Poppins;
+}
+
