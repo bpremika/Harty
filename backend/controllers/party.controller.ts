@@ -9,6 +9,7 @@ import {
 } from "../dto/party.dto";
 import { partySchema } from "../common/partyValidator";
 import { ValidationError } from "yup";
+import { Category } from "@prisma/client";
 
 export const getOnePartyCard = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
@@ -69,7 +70,7 @@ export const getPartyPerUsers = async (req: Request, res: Response) => {
 };
 export const getPartyPerCategory = async (req: Request, res: Response) => {
   const category = req.query.category as string | null;
-  if (category == null || category == undefined || category! in Category) {
+  if (category == null || category == undefined) {
     const party = await prisma.party.findMany();
     res.status(200).json(party);
   } else if (category in Category) {
