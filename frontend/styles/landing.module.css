@@ -4,11 +4,10 @@
     justify-content: center;
     display: flex;
     overflow: auto;
-    
+    border-radius: 30px;
     height: 100vh;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 80%;
     padding-top:20px;
     padding-bottom:20px;
     position: relative;

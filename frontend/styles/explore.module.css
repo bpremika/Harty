@@ -1,0 +1,19 @@
+.main {
+    background-color: #16213E;
+}
+.navbar {
+    height: 64px;
+    width: 100vw;
+    position: absolute;
+    background-color: #2B3B64;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.content{
+    position: absolute;
+    top: 99px;
+    left: 99px;
+    right: 35px;
+}
