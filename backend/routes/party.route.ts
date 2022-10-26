@@ -5,6 +5,7 @@ import {
   getManyPartyCards,
   getOnePartyCard,
   getPartyPerActivity,
+  getPartyPerUsers,
   getPartyRoom,
   joinParty,
 } from "../controllers/party.controller";
@@ -17,3 +18,4 @@ partyRouter.get("/room/:id", getPartyRoom);
 partyRouter.get("/activity/:id", getPartyPerActivity);
 partyRouter.post("/", createParty);
 partyRouter.post("/join/:id", joinParty);
+partyRouter.post("/myparty", getPartyPerUsers);
