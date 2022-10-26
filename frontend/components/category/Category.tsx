@@ -1,18 +1,9 @@
 import { Center } from "@mantine/core";
 import { useState } from "react";
-import styles from "../../styles/catergory.module.css"
-
-
-
-
+import styles from "../../styles/category.module.css"
 
 const Category = () =>{
-
-    
     const [isGame,setButton] = useState(true)
-
-
-
     function butclick(){
         
         setButton(!isGame);
@@ -28,10 +19,7 @@ const Category = () =>{
         }
     }
     return <>
-        <div style={{
-            width : "80%"
-            
-        }}>
+        <div style={{width : "80%"}}>
             <div className={styles.titleContainer}>
                 <div className={styles.boxes}></div>
                 <h2 className={styles.category} style={{color : "black"}}>CATEGORIES</h2>
@@ -45,9 +33,6 @@ const Category = () =>{
                 <button id = "game" className = {styles.button} onClick = {butclick}>ONLINE GAME</button>
                 <button id = "act" className = {styles.button} onClick = {butclick}>OUTDOOR ACTIVITIES</button>
             </div>
-            
-
-
         </div>
     </>
 }

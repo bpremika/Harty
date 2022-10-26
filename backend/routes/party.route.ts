@@ -5,6 +5,7 @@ import {
   getManyPartyCards,
   getOnePartyCard,
   getPartyPerActivity,
+  getPartyPerUsers,
   getPartyRoom,
   joinParty,
 } from "../controllers/party.controller";
@@ -12,8 +13,9 @@ import {
 export const partyRouter = Router();
 partyRouter.get("/", getManyPartyCards);
 partyRouter.get("/activitylist", getActivitylist);
-partyRouter.get("/:id", getOnePartyCard);
 partyRouter.get("/room/:id", getPartyRoom);
 partyRouter.get("/activity/:id", getPartyPerActivity);
 partyRouter.post("/", createParty);
 partyRouter.post("/join/:id", joinParty);
+partyRouter.post("/myparty", getPartyPerUsers);
+partyRouter.get("/:id", getOnePartyCard);

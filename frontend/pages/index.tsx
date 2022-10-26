@@ -5,6 +5,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { CardnModal } from '../components/common/CardnModal'
 import PartyCards from '../components/common/PartyCards'
+import Category from '../components/category/Category'
 
 const Home: NextPage = () => {
   return (
@@ -21,6 +22,7 @@ const Home: NextPage = () => {
         <div className={styles.rightContainer}>
           <div className={styles.navbar}>
           </div>
+          <Category/>
           <div className={styles.feed}>
             <PartyCards path='party/'/>
           </div>
