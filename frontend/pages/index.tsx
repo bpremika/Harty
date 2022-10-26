@@ -30,7 +30,7 @@ const Home: NextPage = () => {
         <div className={styles.navbar}>
             <h1 style={{marginLeft: '79px'}}>Home</h1>
             <div style={{width: '50px', height: '50px', position: 'absolute', right: '10px'}}>
-              <Profilesmall user = "Bruce" image = "https://cdn.discordapp.com/attachments/1028683592450199593/1034873681492574320/unknown.png"/>
+              <Profilesmall user = "Bruce" image = "https://cdn.discordapp.com/attachments/1031508000151707718/1034905338345951272/unknown.png"/>
             </div>
         </div>
         <div>
