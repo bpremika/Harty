@@ -34,10 +34,9 @@ export function CardnModal(d:Lprops){
     const [modalID,setModalID] = useState<number | null>(null);
     
     return <>
-        {modalID && <div className={st.formodal}>
+        {modalID && <div className={`${st.formodal} ${st.transparentback}`}>
             <Modal data={d.data.find(v=>v.id==modalID)!} close={()=>setModalID(null)}/>
-            <div className={st.transparentback}>
-            </div>
+            
         </div> }
         
         <div className={st.base}>
