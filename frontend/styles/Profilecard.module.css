@@ -1,0 +1,53 @@
+.profilebox{
+    width: 200px;
+    background-color: black;
+    margin: 0%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    align-items: center;
+    padding: 9px;
+}
+.imagebox{
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    border-radius: 50%;
+    align-items: center;
+    margin-top: 17px;
+}
+.image{
+    border-radius: 50%;
+    object-fit:fill ;
+    width: 100%;
+    height: 100%;
+}
+.username{
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 10px;
+    color: white;
+}
+.logout{
+    background-color: #E94560;
+    border-radius: 30px;
+    color: white;
+    cursor: grab;
+    font-size:10px;
+    margin-top: 37.45px;
+    margin-left: 98px;
+    display: flex;
+    justify-content: center;
+    padding-left:16px ;
+    padding-right:16px ;
+}
+
+.close{
+    width: 20px;
+    height:20px;
+    color: white;
+    display: flex;
+    align-self: center;
+    margin-right:8px;
+    margin-left:160px ;
+}
