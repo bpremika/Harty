@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Router, { useRouter } from "next/router";
 import React, { useCallback, useRef } from 'react';
 import styles from '../../styles/Signin.module.css'
 const SignIn = () =>{
@@ -17,6 +18,7 @@ const SignIn = () =>{
         try {
             const res = await axios.post("https://harty.onfirebyte.xyz/login", data);
             console.log(res.data);
+            Router.push('/');
           } catch (error) {
             console.error(error);
           }
