@@ -9,8 +9,10 @@ const app = express();
 
 const port = Number.parseInt(process.env.PORT ?? "3000");
 
-var corsOptions = {
-    origin: "*",
+const corsOptions: cors.CorsOptions = {
+    // origin: "*",
+    allowedHeaders: "Origin, Content-Type, Accept",
+    credentials: true,
 };
 
 app.use(cors(corsOptions));
