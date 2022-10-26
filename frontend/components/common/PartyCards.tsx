@@ -22,11 +22,15 @@ interface PartynTotal {
     total: number;
     parties: Props[];
 }
-const PartyCards = () =>{
+
+interface PartyCardProps{
+    path : string;
+}
+const PartyCards = (props:PartyCardProps) =>{
     const [parties,setparties] = useState<PartynTotal | null>(null);
     
     function fetchallparties(){
-        axios.get('https://harty.onfirebyte.xyz/party/').then(res=>{
+        axios.get(`https://harty.onfirebyte.xyz/${props.path}`).then(res=>{
             setparties(res.data);
         })
     }
