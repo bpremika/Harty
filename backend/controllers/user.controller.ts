@@ -39,7 +39,12 @@ export const login = async (req: Request, res: Response) => {
         const sessionData = await prisma.session.create({
             data: { userID: user.id },
         });
-        res.cookie("token", sessionData.id);
+        res.cookie("token", sessionData.id, {
+            expires: new Date(Date.now() + 9000000000000),
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+        });
         res.status(200).json({ message: "login successful" });
     } catch (error) {
         res.status(400).json({ message: error });
@@ -70,7 +75,12 @@ export const userBio = async (req: Request, res: Response) => {
 export const logout = async (req: Request, res: Response) => {
     try {
         await prisma.session.delete({ where: { id: req.cookies.token } });
-        res.cookie("token", "");
+        res.cookie("token", "", {
+            expires: new Date(Date.now() + 9000000000000),
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+        });
         res.status(200).json({ message: "logout successful" });
     } catch (error) {
         res.status(400).json({ message: "something went wrong." });
