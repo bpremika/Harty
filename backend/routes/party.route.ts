@@ -5,6 +5,7 @@ import {
   getManyPartyCards,
   getOnePartyCard,
   getPartyPerActivity,
+  getPartyPerCategory,
   getPartyPerUsers,
   getPartyRoom,
   joinParty,
@@ -15,6 +16,7 @@ partyRouter.get("/", getManyPartyCards);
 partyRouter.get("/activitylist", getActivitylist);
 partyRouter.get("/room/:id", getPartyRoom);
 partyRouter.get("/activity/:id", getPartyPerActivity);
+partyRouter.get("/category", getPartyPerCategory);
 partyRouter.post("/", createParty);
 partyRouter.post("/join/:id", joinParty);
 partyRouter.get("/myparty", getPartyPerUsers);
