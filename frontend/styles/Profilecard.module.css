@@ -42,3 +42,12 @@
     padding-right:16px ;
 }
 
+.close{
+    width: 20px;
+    height:20px;
+    color: white;
+    display: flex;
+    align-self: center;
+    margin-right:8px;
+    margin-left:160px ;
+}
