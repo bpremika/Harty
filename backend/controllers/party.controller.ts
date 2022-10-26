@@ -10,6 +10,7 @@ import {
 import { partySchema } from "../common/partyValidator";
 import { number, ValidationError } from "yup";
 import session from "express-session";
+import { Category } from "@prisma/client";
 
 export const getOnePartyCard = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
@@ -66,6 +67,24 @@ export const getPartyPerUsers = async (req: Request, res: Response) => {
     res.status(200).json(parties);
   } catch (error) {
     res.status(400).json(error);
+  }
+};
+export const getPartyPerCategory = async (req: Request, res: Response) => {
+  const category = req.query.category as string | null;
+  if (category == null || category == undefined || category! in Category) {
+    const party = await prisma.party.findMany();
+    res.status(200).json(party);
+  } else if (category in Category) {
+    const party = await prisma.party.findMany({
+      where: {
+        activity: {
+          category: category as Category,
+        },
+      },
+    });
+    res.status(200).json(party);
+  } else {
+    res.status(404).json({ message: "Not found" });
   }
 };
 export const getPartyPerActivity = async (req: Request, res: Response) => {
