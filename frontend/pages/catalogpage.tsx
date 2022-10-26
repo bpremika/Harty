@@ -7,7 +7,7 @@ import { CardnModal } from "../components/common/CardnModal";
 
 
 
-export default function cate(){
+export default function Cate(){
     const router = useRouter();
     interface Props{
         id: number;

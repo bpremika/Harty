@@ -19,7 +19,7 @@ interface Prop{
     }
 
 
- function catalog(){
+ function Catalog(){
     const[games,setgames] = useState<Picture[]>([])
     const[outdoors,setoutdoors] = useState<Picture[]>([])
 
@@ -53,12 +53,12 @@ interface Prop{
                     <div className={styles.pic}>
                         {
                             isShowMoreG ? (games.map((v,i)=>(
-                            <div style={{margin : "15px"}}>
+                            <div style={{margin : "15px"}} key={v.id}>
                                 <Actpic  name = {v.name} URL = {v.img_url} id = {v.id}/>
                             </div>
                             ))) 
                             : (games.slice(0,8).map((v,i)=>(
-                                <div style={{margin : "15px"}}>
+                                <div style={{margin : "15px"}} key={v.id}>
                                     <Actpic  name = {v.name} URL = {v.img_url} id = {v.id} />
                                 </div>
                                 )))
@@ -75,12 +75,12 @@ interface Prop{
                     <div className={styles.pic}>
                         {
                             isShowMoreA ? (outdoors.map((v,i)=>(
-                            <div style={{margin : "15px"}}>
+                            <div style={{margin : "15px"}} key={v.id}>
                                 <Actpic  name = {v.name} URL = {v.img_url}  id = {v.id}/>
                             </div>
                             ))) 
                             :    (outdoors.slice(0,8).map((v,i)=>(
-                                <div style={{margin : "15px"}}>
+                                <div style={{margin : "15px"}} key={v.id}>
                                     <Actpic  name = {v.name} URL = {v.img_url} id = {v.id}/>
                                 </div>
                                 )))
@@ -93,4 +93,4 @@ interface Prop{
                 </div>
         </div>)
 }
-export default catalog
+export default Catalog
