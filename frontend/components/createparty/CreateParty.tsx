@@ -286,7 +286,7 @@ const NewParty = () => {
     let actlist= activities.map(({id, topic}) => ({value: id,label: topic}))
 
     return <>
-            {activities.length == 0 ? <div style={{color: 'white'}}>loading</div> : <CreateNewParty activity={actlist}/>}
+            {activities.length == 0 ? <div style={{color: 'white'}}>loading...</div> : <CreateNewParty activity={actlist}/>}
         </>
 
 }
