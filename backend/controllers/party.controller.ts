@@ -8,9 +8,7 @@ import {
   PartyRoomDTO,
 } from "../dto/party.dto";
 import { partySchema } from "../common/partyValidator";
-import { number, ValidationError } from "yup";
-import session from "express-session";
-import { Category } from "@prisma/client";
+import { ValidationError } from "yup";
 
 export const getOnePartyCard = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
@@ -50,7 +48,7 @@ export const getOnePartyCard = async (req: Request, res: Response) => {
 export const getPartyPerUsers = async (req: Request, res: Response) => {
   try {
     const session = await prisma.session.findUnique({
-      where: { id: req.session.token },
+      where: { id: req.cookies.token },
       include: {
         user: {
           include: {
@@ -207,7 +205,7 @@ export const createParty = async (req: Request, res: Response) => {
     const parsedParty = partySchema.validateSync(party);
     const { tag1, tag2, tag3, date } = parsedParty;
     const session = await prisma.session.findUnique({
-      where: { id: req.session.token },
+      where: { id: req.cookies.token },
     });
     if (session == null || session == undefined) {
       res.status(401).json({ message: "session error" });
@@ -246,7 +244,7 @@ export const joinParty = async (req: Request, res: Response) => {
   }
   try {
     const session = await prisma.session.findUnique({
-      where: { id: req.session.token },
+      where: { id: req.cookies.token },
     });
     if (session == null || session == undefined) {
       res.status(401).json({ message: "session error" });
