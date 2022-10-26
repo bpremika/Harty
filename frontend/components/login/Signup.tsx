@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { ChangeEvent, useState } from "react"
 import styles from "../../styles/Signup.module.css"
-import Router,{useRouter } from "next/router";
+import {useRouter } from "next/router";
 const SignUp = () => {
 
     const [formData, setFormData] = useState({
@@ -68,6 +68,7 @@ const SignUp = () => {
           });
     }
     const { username, email, password, password2} = formData;
+    const router = useRouter();
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const newUser = {
@@ -78,8 +79,8 @@ const SignUp = () => {
         try {
           const res = await axios.post("https://harty.onfirebyte.xyz/register", newUser);
           console.log(res.data);
-          await Router.push('/login');
-          Router.reload();
+          await router.push('/login');
+          router.reload();
         } catch (error) {
           console.error(error);
         }
