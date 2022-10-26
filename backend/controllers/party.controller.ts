@@ -53,7 +53,9 @@ export const getPartyPerUsers = async (req: Request, res: Response) => {
       include: {
         user: {
           include: {
-            party: true,
+            party: {
+              include: { activity: true, user: true },
+            },
           },
         },
       },
@@ -63,6 +65,25 @@ export const getPartyPerUsers = async (req: Request, res: Response) => {
       return;
     }
     const parties = session.user.party;
+    const partiesDto: PartiesDTO = {
+      total: parties.length,
+      parties: parties.map((party) => ({
+        id: party.id,
+        title: party.partyname,
+        topic: party.activity.name,
+        image: party.img_url,
+        info: party.public_desc,
+        tag: [party.tag1, party.tag2, party.tag3],
+        numpeople: party.current_member,
+        maxpeople: party.member,
+        time: party.created_at,
+        isPublic: party.is_public,
+        master: party.user.find((u) => u.id == party.masterID)!.username,
+        date: party.date,
+        starttime: party.start_time,
+        endtime: party.end_time,
+      })),
+    };
     res.status(200).json(parties);
   } catch (error) {
     res.status(400).json(error);
@@ -74,14 +95,37 @@ export const getPartyPerCategory = async (req: Request, res: Response) => {
     const party = await prisma.party.findMany();
     res.status(200).json(party);
   } else if (category in Category) {
-    const party = await prisma.party.findMany({
+    const parties = await prisma.party.findMany({
       where: {
         activity: {
           category: category as Category,
         },
       },
+      include: {
+        activity: true,
+        user: true,
+      },
     });
-    res.status(200).json(party);
+    const partiesDto: PartiesDTO = {
+      total: parties.length,
+      parties: parties.map((party) => ({
+        id: party.id,
+        title: party.partyname,
+        topic: party.activity.name,
+        image: party.img_url,
+        info: party.public_desc,
+        tag: [party.tag1, party.tag2, party.tag3],
+        numpeople: party.current_member,
+        maxpeople: party.member,
+        time: party.created_at,
+        isPublic: party.is_public,
+        master: party.user.find((u) => u.id == party.masterID)!.username,
+        date: party.date,
+        starttime: party.start_time,
+        endtime: party.end_time,
+      })),
+    };
+    res.status(200).json(partiesDto);
   } else {
     res.status(404).json({ message: "Not found" });
   }
