@@ -9,6 +9,7 @@
     background-color: #16213E;
     color: white;
     align-items: center;
+    z-index: 2;
 }
 .icon {
     width: 48px;
@@ -55,7 +56,6 @@
     transition-duration: 100ms;
     transform-origin: left;
     scale: 0;
-    z-index: 2;
 }
 
 .leftpoint {
