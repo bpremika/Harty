@@ -1,6 +1,6 @@
 import SideBar from '../components/sidebar/sidebar'
 import Actpic from '../components/activitypicture/act_pic'
-import  styles  from '../styles/Catalog.module.css'
+import  styles  from '../styles/catalog.module.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
