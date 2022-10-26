@@ -1,0 +1,22 @@
+.img{
+    border-radius: 30px;
+    height: 260px;
+    width: 179px;
+    object-fit: cover;
+    
+    
+
+}
+.button {
+    height: 260px;
+    width: 179px;
+    border-radius: 30px;
+    padding: 0%;
+    border: 0px;
+    
+}
+.button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+

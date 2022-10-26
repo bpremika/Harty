@@ -65,8 +65,7 @@ const Modal=(props:Props)=>{
     const endtime = DateTime.fromISO(props.data.endtime).toFormat('HH:mm');
     const date = DateTime.fromISO(props.data.date).toFormat('dd/MM/yyyy');
 
-    return <div className={style.transparentback}>
-        <div className={style.card}>
+    return <div className={style.card}>
             <div className={style.left}>
                 <div className={style.imagebox}><img className={style.cardimage} src={props.data.image} /></div>
                 <div className={style.tagnparty}>
@@ -127,7 +126,6 @@ const Modal=(props:Props)=>{
                 </div>
             </div>
         </div>
-    </div>
 }
 
 export default Modal;

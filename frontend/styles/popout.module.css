@@ -1,0 +1,15 @@
+.but{ 
+    margin-left : 50% ;
+    margin-right : 50% ;  
+    background-color : rgb(85, 177, 85) ;
+    border-radius: 30px;
+    border : none;
+    font-size: 20px;
+    margin-top: 25px;
+    padding: 5px
+}
+
+.but:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19) ;
+    background-color : rgb(112, 202, 112) ;
+}
