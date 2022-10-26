@@ -43,7 +43,7 @@ const PartyCards = (props:PartyCardProps) =>{
     },[parties])
     return <>
     {
-        parties===null?<div>loading</div>:<CardnModal data={parties.parties}/>
+        parties===null?<div>Loading . . . </div>:<CardnModal data={parties.parties}/>
     }
     </>
 }

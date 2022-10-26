@@ -7,13 +7,14 @@ import styles from "../../styles/actpic.module.css"
 interface Picture{
         name : string;
         URL : string;
+        id : number;
 
 }
 const Actpic = (props : Picture) =>{
 
     return (<>
     
-    <Link href={`/Catalogpage?name=${props.name}`} >
+    <Link href={`/Catalogpage?name=${props.name}&id=${props.id}`} >
         <Tooltip style = {{paddingLeft : "2%",paddingRight : "2%", fontFamily : "Poppins"}} label = {props.name} withArrow transition="pop-top-right" closeDelay = {200} > 
         
             <button  className = {styles.button}>

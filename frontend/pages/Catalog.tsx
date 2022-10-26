@@ -14,6 +14,7 @@ import axios from 'axios';
 interface Picture{
     name : string;
     img_url : string;
+    id : number
 
 }
 
@@ -128,21 +129,22 @@ const outdoor =[{name : "Camping" , URL : "https://eastwestbank.com/ReachFurther
 
 
 
-    return (<div style={{display : 'inline-block' , backgroundColor : '#16213E' , height : "100%" , width : "100%"}} >
+    return (<div style={{display : 'flex' , backgroundColor : '#16213E' , height : "100%" , width : "100%"}} >
                 <SideBar/>
+                <div style={{display:"inline-block"}}>
                 <div className={styles.bar}>Online Game</div>
 
                 <div className={styles.box}>
                     <div className={styles.pic}>
                         {
                             isShowMoreG ? (games.map((v,i)=>(
-                            <div style={{margin : "10px"}}>
-                                <Actpic  name = {v.name} URL = {v.img_url} />
+                            <div style={{margin : "15px"}}>
+                                <Actpic  name = {v.name} URL = {v.img_url} id = {v.id}/>
                             </div>
                             ))) 
-                            : (games.slice(0,6).map((v,i)=>(
-                                <div style={{margin : "10px"}}>
-                                    <Actpic  name = {v.name} URL = {v.img_url} />
+                            : (games.slice(0,8).map((v,i)=>(
+                                <div style={{margin : "15px"}}>
+                                    <Actpic  name = {v.name} URL = {v.img_url} id = {v.id} />
                                 </div>
                                 )))
                         }
@@ -158,13 +160,13 @@ const outdoor =[{name : "Camping" , URL : "https://eastwestbank.com/ReachFurther
                     <div className={styles.pic}>
                         {
                             isShowMoreA ? (outdoors.map((v,i)=>(
-                            <div style={{margin : "10px"}}>
-                                <Actpic  name = {v.name} URL = {v.img_url} />
+                            <div style={{margin : "15px"}}>
+                                <Actpic  name = {v.name} URL = {v.img_url}  id = {v.id}/>
                             </div>
                             ))) 
-                            :    (outdoors.slice(0,6).map((v,i)=>(
-                                <div style={{margin : "10px"}}>
-                                    <Actpic  name = {v.name} URL = {v.img_url}/>
+                            :    (outdoors.slice(0,8).map((v,i)=>(
+                                <div style={{margin : "15px"}}>
+                                    <Actpic  name = {v.name} URL = {v.img_url} id = {v.id}/>
                                 </div>
                                 )))
                         }
@@ -172,6 +174,7 @@ const outdoor =[{name : "Camping" , URL : "https://eastwestbank.com/ReachFurther
                         <div style={{margin : "auto"}}>
                             <button className={styles.show} onClick = {showhideA} > {!isShowMoreA ? "Show more v" : "Show Less ^"} </button>
                         </div>
+                </div>
                 </div>
         </div>)
 }
