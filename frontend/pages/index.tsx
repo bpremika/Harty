@@ -39,6 +39,7 @@ const Home: NextPage = () => {
         <div className={styles.rightContainer}>
           <div className={styles.navbarplaceholder}>
           </div>
+          <Category/>
           <div className={styles.feed}>
             <Category onGameClick={() => {handleGameClick()}} onActClick={() => {handleActClick()}}/>
             <div ref = {ref2} style = {{backgroundColor: 'white', margin: '20px 0px', marginTop: '36px', height: '36px', width: '80%', borderRadius: '30px'}}>
