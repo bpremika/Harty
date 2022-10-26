@@ -78,7 +78,7 @@ const SignUp = () => {
         try {
           const res = await axios.post("https://harty.onfirebyte.xyz/register", newUser);
           console.log(res.data);
-          Router.push('/signup','/login');
+          await Router.push('/login');
           Router.reload();
         } catch (error) {
           console.error(error);
