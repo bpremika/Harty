@@ -18,8 +18,12 @@ const Home: NextPage = () => {
         <div>
           <SideBar />
         </div>
-        <div className={styles.feed}>
-          <PartyCards/>
+        <div className={styles.rightContainer}>
+          <div className={styles.navbar}>
+          </div>
+          <div className={styles.feed}>
+            <PartyCards path='party/'/>
+          </div>
         </div>
       </main>  
     </div>
