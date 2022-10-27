@@ -5,8 +5,6 @@
     vertical-align: middle;
     padding-left: 5%;
     padding-right: 5%;
-    
-    
     display: inline;
 }
 .titleContainer{
@@ -34,6 +32,7 @@
     font-weight: bold;
     width: 47%;
     font-family: "Poppins";
+    cursor: pointer;
     
 }
 .button:hover{

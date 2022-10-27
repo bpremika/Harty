@@ -1,20 +1,23 @@
 .profilebox{
     width: 200px;
-    background-color: black;
+    background-color: white;
     margin: 0%;
     display: flex;
     flex-direction: column;
     border-radius: 30px;
     align-items: center;
     padding: 9px;
+    position: absolute;
+    right: 0px;
+    z-index: 10;
 }
 .imagebox{
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     background-color: white;
     border-radius: 50%;
     align-items: center;
-    margin-top: 17px;
+    cursor: pointer;
 }
 .image{
     border-radius: 50%;
@@ -26,14 +29,14 @@
     font-size: 16px;
     font-weight: 700;
     margin-top: 10px;
-    color: white;
+    color: black;
 }
 .logout{
     background-color: #E94560;
     border-radius: 30px;
     color: white;
-    cursor: grab;
-    font-size:10px;
+    cursor: pointer;
+    font-size:15px;
     margin-top: 37.45px;
     margin-left: 98px;
     display: flex;
@@ -45,7 +48,8 @@
 .close{
     width: 20px;
     height:20px;
-    color: white;
+    color: black;
+    cursor: pointer;
     display: flex;
     align-self: center;
     margin-right:8px;

@@ -10,6 +10,7 @@
     background-color: #101626;
     color: white;
     align-items: center;
+    z-index: 2;
 }
 .icon {
     width: 48px;

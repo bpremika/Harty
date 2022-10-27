@@ -1,0 +1,34 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    background-color: #16213E;
+}
+.navbar {
+    height: 64px;
+    width: 100vw;
+    position: absolute;
+    background-color: #2B3B64;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.content{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.feed{
+    margin-top: 99px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+    width: 90%;
+    margin-right: 35px;
+    margin-left: 99px;
+}

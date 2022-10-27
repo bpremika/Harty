@@ -1,0 +1,13 @@
+img {
+    width: 128px;
+    height: 128px;
+    border: 1px solid hotpink;
+}
+
+.fill {
+    object-fit: fill;
+}
+
+.contain {
+    object-fit: contain;
+}

@@ -30,9 +30,12 @@ const PartyCards = (props:PartyCardProps) =>{
     const [parties,setparties] = useState<PartynTotal | null>(null);
     
     function fetchallparties(){
-        axios.get(`https://harty.onfirebyte.xyz/${props.path}`).then(res=>{
+
+            axios.get(`https://harty.onfirebyte.xyz/${props.path}`, {withCredentials: true}).then(res=>{
+            console.log(res.data)
             setparties(res.data);
-        })
+        }).catch(e=>console.log(e)
+        )
     }
     useEffect(()=>{
         fetchallparties();
@@ -43,7 +46,7 @@ const PartyCards = (props:PartyCardProps) =>{
     },[parties])
     return <>
     {
-        parties===null?<div>loading</div>:<CardnModal data={parties.parties}/>
+        parties===null?<div style={{color: 'white'}}>loading...</div>:<CardnModal data={parties.parties}/>
     }
     </>
 }
