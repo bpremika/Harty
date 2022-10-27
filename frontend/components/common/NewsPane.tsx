@@ -38,12 +38,12 @@ function Demo() {
       >
       {aa.map( (v) => {
         return <Carousel.Slide style={{display: "flex", justifyContent: "center", alignContent: "center"}} key={v.id}>
-            <Link href={v.link} >
-                <div style={{display: "flex", justifyContent: "center", alignContent: "center", cursor: 'pointer'}}>
-                    <img src={v.img_url} style={{objectFit: "fill", width: '100%', borderRadius: '20px'}}/>
-                </div>
-            </Link>
-        </Carousel.Slide>
+                <Link href={v.link} >
+                    <div style={{display: "flex", justifyContent: "center", alignContent: "center", cursor: 'pointer'}}>
+                        <img src={v.img_url} style={{objectFit: "fill", width: '100%', borderRadius: '20px'}}/>
+                    </div>
+                </Link>
+              </Carousel.Slide>
       })}
     </Carousel>
   );

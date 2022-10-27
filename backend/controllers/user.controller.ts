@@ -30,10 +30,10 @@ export const login = async (req: Request, res: Response) => {
         const username = parsedUser.username;
         const user = await prisma.user.findUnique({ where: { username } });
         console.log(user);
-        if (user === null) return res.status(404).json({ message: "don't have an account" });
+        if (user === null) return res.status(404).json({ message: "Account With this Username doesn't exist" });
         const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
         if (!isPasswordValid) {
-            res.status(401).json({ message: "password wrong" });
+            res.status(401).json({ message: "Wrong Password!!" });
             return;
         }
         const sessionData = await prisma.session.create({
@@ -45,7 +45,7 @@ export const login = async (req: Request, res: Response) => {
             secure: true,
             sameSite: "none",
         });
-        res.status(200).json({ message: "login successful" });
+        res.status(200).json({ message: "Login Successful" });
     } catch (error) {
         res.status(400).json({ message: error });
     }
