@@ -1,44 +1,54 @@
-import Image, { StaticImageData } from "next/image"
-import style from "../styles/shape.module.css"
+import { Carousel } from '@mantine/carousel';
+import { useShallowEffect } from '@mantine/hooks';
+import axios from 'axios';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import Style from '../public/img.module.css';
 
-interface imageProp{
-    title : string;
-    imageurl : StaticImageData;
-}
+function Demo() {
+    interface Picture {
+        id : number;
+        name : string;
+        img_url : string;
+        link : string;
+    }
+    const[aa,setaa] = useState<Picture[]>([]);
 
-
-
-const AddImage  = (props : imageProp) => {
-    
-    return <>
-        <div style={{height: "346px", width: "100%",position:"relative",overflow:"hidden",display: "flex", justifyContent: "center"}}>
-            <Image  src={props.imageurl} style={{
-                
-                width:"500px"
-                // objectFit:"fill"
-                ,position: "absolute"
-            }} alt="" />
-        </div>
-    </>
-}
-
-const Notice = (props : imageProp) => {
-    return <>
-        <div> 
-            dgrezdmgbidmb
-            <AddImage {...props}/>
-            <span className={style.dot} style={{position: "absolute", top: "50%", left: "8px"}}>
-                <span className={[style.arrow,style.left].join(" " )}
-                style = {{ left: "8px"}}></span>
-            </span>
+    useEffect(()=>{
+        axios.get<Picture[]>('https://harty.onfirebyte.xyz/thumbnail').then((v)=>{
+            setaa(v.data);
+        })
+    })
+    return (
+        <Carousel
+        sx={{ maxWidth: "80%" }}
+        mx="auto"
+        withIndicators
+        height={380}
+        styles={{
+          indicator: {
+            width: 12,
+            height: 4,
+            transition: 'width 250ms ease',
+  
+            '&[data-active]': {
+              width: 40,
+            },
+          },
+        }}
         
-            <span className={style.dot}  style={{position: "absolute", top: "50%", right: "8px"}}>
-                <span className={[style.arrow,style.right].join(" " )}
-                style = {{ left: "7px"}}></span>
-            </span>
-        snfvsnrovlsn
-        </div>
-    </>
+      >
+      {aa.map( (v) => {
+        return <Carousel.Slide style={{display: "flex", justifyContent: "center", alignContent: "center"}} key={v .id}>
+            <div style={{display: "flex", justifyContent: "center", alignContent: "center"}}>
+                <img src={v.img_url} style={{objectFit: "contain", width: "100%"}}/>
+            </div>
+        </Carousel.Slide>
+      })}
+    </Carousel>
+  );
 }
 
-export default Notice;
+
+
+export default Demo;
