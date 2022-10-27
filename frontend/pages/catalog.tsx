@@ -57,12 +57,12 @@ interface Prop{
                 <div className={styles.navbar}>
                     <h1 style={{marginLeft: '79px'}}>Catalog</h1>
                     <div style={{width: '50px', height: '50px', position: 'absolute', right: '10px'}}>
-                        <Profilesmall user = "Bruce" image = "https://cdn.discordapp.com/attachments/1031508000151707718/1034905338345951272/unknown.png"/>
+                        <Profilesmall image = "https://cdn.discordapp.com/attachments/1031508000151707718/1034905338345951272/unknown.png"/>
                     </div>
                 </div>
                 <SideBar/>
                 <div style={{display:"inline-block"}}>
-                <div className={styles.bar}>Online Game</div>
+                <div className={styles.bar_cat}>Online Game</div>
 
                 <div className={styles.box}>
                     <div className={styles.pic}>
@@ -84,7 +84,7 @@ interface Prop{
                         </div>
                 </div>
 
-                <div className={styles.bar}>Outdoor Activity</div>
+                <div className={styles.bar_cat}>Outdoor Activity</div>
 
                 <div className={styles.box}>
                     <div className={styles.pic}>

@@ -86,9 +86,14 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
             privateDesc: '',
         },
         validate: {
+            image: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
+            info: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
             title: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
             topicID: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
             tag1: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
+            tag2: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
+            tag3: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
+            date: (value) => (value === null ? 'This field cannot be empty' : null),
         },
         transformValues: (values) => ({
             title: values.title,

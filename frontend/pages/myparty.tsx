@@ -21,7 +21,7 @@ const MyParty = () => {
                 <div className={styles.navbar}>
                     <h1 style={{marginLeft: '79px'}}>My Party</h1>
                     <div style={{width: '50px', height: '50px', position: 'absolute', right: '10px'}}>
-                        <Profilesmall user = "Bruce" image = "https://cdn.discordapp.com/attachments/1031508000151707718/1034905338345951272/unknown.png"/>
+                        <Profilesmall image = "https://cdn.discordapp.com/attachments/1031508000151707718/1034905338345951272/unknown.png"/>
                     </div>
                 </div>
                 <div className={styles.content}>

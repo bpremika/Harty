@@ -9,6 +9,7 @@
     padding: 9px;
     position: absolute;
     right: 0px;
+    z-index: 10;
 }
 .imagebox{
     width: 50px;

@@ -53,15 +53,13 @@ export default function Cate(){
 
     return (<div  style={{backgroundColor : "#16213E" ,height : "100%" , width : "100vw" , display : "flex"}}>
                 <SideBar/>
-                <div style = {{display : "inline" , width : "100%"}}>
+                <div style = {{display : "flex", flexDirection: 'column', alignItems: 'center' , width : "100%"}}>
                     <h1 className = {styles.bar}>
                         {router.query.name}
                     </h1>
                     {/* ${router.query.id} */}
-                    <div style={{margin : "90px" , width: "100%" }}>
-                    
+                    <div style={{width: "80%" , marginTop: '80px'}}>
                         <PartyCards />
-
                     </div>
                 </div>
 
