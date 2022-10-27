@@ -4,11 +4,10 @@
     justify-content: center;
     display: flex;
     overflow: auto;
-    
+    border-radius: 30px;
     height: 100vh;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 80%;
     padding-top:20px;
     padding-bottom:20px;
     position: relative;
@@ -31,6 +30,7 @@
     height: 100%;
     position: fixed;
     top: 0px;
+    left: 0px;
     z-index: 1;
     opacity: 50%;
 }

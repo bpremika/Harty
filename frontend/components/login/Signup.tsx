@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { ChangeEvent, useState } from "react"
 import styles from "../../styles/Signup.module.css"
-import Router,{useRouter } from "next/router";
+import {useRouter } from "next/router";
+import Popup from "../common/PopUp";
 const SignUp = () => {
 
     const [formData, setFormData] = useState({
@@ -68,6 +69,7 @@ const SignUp = () => {
           });
     }
     const { username, email, password, password2} = formData;
+    const router = useRouter();
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const newUser = {
@@ -78,12 +80,23 @@ const SignUp = () => {
         try {
           const res = await axios.post("https://harty.onfirebyte.xyz/register", newUser);
           console.log(res.data);
-          Router.push('/signup','/login');
-          Router.reload();
+          handlePopup()
         } catch (error) {
           console.error(error);
         }
       }
+    
+    const [popup, setPopup] = useState(false)
+
+    function handlePopup() {
+      setPopup(true)
+    }
+
+    async function pushToLogin() {
+      await router.push('/login')
+      router.reload()
+    }
+    
     
     return <>
         <form className={styles.boxContainer} onSubmit={onSubmit}>
@@ -114,6 +127,9 @@ const SignUp = () => {
                 <button type='submit' value='signup' className={styles.joinBtn}>SIGN UP</button>
             </div>
         </form>
+      <div style={{position: 'absolute'}}>
+        {popup && <Popup is = {() => pushToLogin()}/>}
+      </div>
     </>
 };
 export default SignUp

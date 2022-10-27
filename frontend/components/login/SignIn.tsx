@@ -16,7 +16,7 @@ const SignIn = () =>{
         }
         console.log(data)
         try {
-            const res = await axios.post("https://harty.onfirebyte.xyz/login", data);
+            const res = await axios.post("https://harty.onfirebyte.xyz/login", data, {withCredentials: true});
             console.log(res.data);
             Router.push('/');
           } catch (error) {

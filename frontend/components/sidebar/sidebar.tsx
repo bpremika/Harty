@@ -1,27 +1,46 @@
 import styles from '../../styles/sidebar.module.css'
+import Link from 'next/link'
 import { HomeIcon, GlobeAmericasIcon, BookOpenIcon, UserGroupIcon } from '@heroicons/react/20/solid'
 
 const SideBar = () => {
     return (
         <div className={styles.sidebar}>
+            <Link href='/'>
             <div style={{
                 height: '64px',
-                width: '64px'
+                width: '64px',
             }}>
-                <img src='/hartyiconnobg.svg' />
+                <img style={{cursor: 'pointer'}} src='/hartyiconnobg.svg' />
             </div>
-            <SideBarIcon text = "Home"> 
-                <HomeIcon />
-            </SideBarIcon>
-            <SideBarIcon text = "Explore">
-                <GlobeAmericasIcon />
-            </SideBarIcon>
-            <SideBarIcon text = "Catalog">
-                <BookOpenIcon />
-            </SideBarIcon>
-            <SideBarIcon text = "My Party">
-                <UserGroupIcon />
-            </SideBarIcon>
+            </Link>
+            <Link href={'/'}>
+                <div>
+                    <SideBarIcon text = "Home"> 
+                        <HomeIcon />
+                    </SideBarIcon>
+                </div>
+            </Link>
+            <Link href='/explore'>
+                <div>
+                    <SideBarIcon text = "Explore">
+                        <GlobeAmericasIcon />
+                    </SideBarIcon>
+                </div>
+            </Link>
+            <Link href='/catalog'>
+                <div>
+                    <SideBarIcon text = "Catalog">
+                        <BookOpenIcon />
+                    </SideBarIcon>
+                </div>
+            </Link>
+            <Link href='/myparty'>
+                <div>
+                    <SideBarIcon text = "My Party">
+                        <UserGroupIcon />
+                    </SideBarIcon>
+                </div>
+            </Link>
         </div>
     )
 }
@@ -38,7 +57,7 @@ const SideBarIcon = (props: SideBarIconProps) => {
                 </span>
                 <div className={styles.leftpoint}>   
                 </div>
-            </div>       
+            </div>  
     )
 }
 

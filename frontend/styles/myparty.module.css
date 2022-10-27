@@ -1,0 +1,30 @@
+.main {
+    background-color: #16213E;
+}
+
+.createparty {
+    position: absolute;
+    right: 0px;
+    z-index: 0;
+}
+.navbar {
+    height: 64px;
+    width: 100vw;
+    position: absolute;
+    background-color: #2B3B64;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 1;
+}
+.content{
+    position: absolute;
+    top: 99px;
+    left: 99px;
+    right: 35px;
+}
+.upcomming {
+    color: white;
+    height: 60%;
+}

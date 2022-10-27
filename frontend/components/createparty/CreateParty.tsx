@@ -8,7 +8,6 @@ import { CalendarIcon, ClockIcon} from '@heroicons/react/20/solid'
 import { useForm } from '@mantine/form'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import * as dayjs from 'dayjs'
 
 interface activityProps {
     value: string,
@@ -19,6 +18,7 @@ interface CreateNewPartyProps {
 }
 interface formData {
     isPublic: boolean,
+    isPublic_string: string,
     title: string,
     topicID: string,
     image: string,
@@ -26,13 +26,11 @@ interface formData {
     tag1: string,
     tag2: string,
     tag3: string,
-    numPeople: number,
-    maxPeople: number,
-    master: string,
+    maxpeople: number,
     date: Date,
-    startTime: Date,
-    endTime: Date,
-    privateDes: string,
+    starttime: Date,
+    endtime: Date,
+    privateDesc: string,
 }
 
 
@@ -54,22 +52,6 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
     const now = new Date()
     const then = new Date()
     const [time, setValue] = useState<[Date, Date]>([now, then])
-
-    const [files, setFiles] = useState<FileWithPath[]>([])
-
-    const previews = files.map((file, index) => {
-        const imageUrl = URL.createObjectURL(file);
-        return (
-        <Image
-            key={index}
-            src={imageUrl}
-            height = {200}
-            width = {460}
-            imageProps={{ onLoad: () => URL.revokeObjectURL(imageUrl) }}
-            radius = 'xl'
-        />
-        )
-    })
     
     function handleSubmit() {
         if (form.isValid()) {
@@ -79,16 +61,17 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
 
     async function formHandle(data: formData) {
         try {
-            //const res = await axios.post('https://harty.onfirebyte.xyz/party/',data)
+            const res = await axios.post('https://harty.onfirebyte.xyz/party/', data, {withCredentials: true})
             console.log(data)
         } catch (error) {
             console.error(error)
         }
     }
 
-    const form = useForm({
+    const form = useForm<formData>({
         initialValues: {
-            isPublic: '',
+            isPublic: true,
+            isPublic_string: "public",
             title: '',
             topicID: '',
             image: '',
@@ -96,19 +79,21 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
             tag1: '',
             tag2: '',
             tag3: '',
-            numPeople: 1,
-            maxPeople: 2,
-            master: '',
-            date: '',
-            startTime: '',
-            endTime: '',
-            privateDes: '',
+            maxpeople: 2,
+            date: new Date(),
+            starttime: new Date(),
+            endtime: new Date(),
+            privateDesc: '',
         },
         validate: {
+            image: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
+            info: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
             title: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
             topicID: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
-            isPublic: (value) => (value.length == 0 ? 'Please Select Party Type' : null),
             tag1: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
+            tag2: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
+            tag3: (value) => (value.length == 0 ? 'This field cannot be empty' : null),
+            date: (value) => (value === null ? 'This field cannot be empty' : null),
         },
         transformValues: (values) => ({
             title: values.title,
@@ -118,14 +103,13 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
             tag1: values.tag1,
             tag2: values.tag2,
             tag3: values.tag3,
-            numPeople: Number(values.numPeople),
-            maxPeople: Number(values.maxPeople),
-            isPublic: values.isPublic == "public",
-            master: values.master,
+            isPublic_string: values.isPublic_string,
+            maxpeople: Number(values.maxpeople),
+            isPublic: values.isPublic_string == "public",
             date: date,
-            startTime: time[0],
-            endTime: time[1],
-            privateDes: values.privateDes
+            starttime: time[0],
+            endtime: time[1],
+            privateDesc: values.privateDesc
         }),
         
     })
@@ -151,26 +135,13 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
                                     borderRadius: '30px',
                                     position: 'relative',
                                 }}>
-                                    {previews}
                                 </div>
 
-                                <Dropzone accept={IMAGE_MIME_TYPE} onDrop={setFiles} style = {{
-                                    height: '60px',
-                                    top: '-150px',
-                                    position: 'relative',
-                                    opacity: '0.3',
-                                    backgroundColor: 'transparent',
-                                }}>
-                                    <Group position='center' align='center'>
-                                        <IconPhotoPlus 
-                                            size={25}
-                                            color = {'white'}
-                                        />
-                                        <Text align="center" color={'white'}>Drop images here</Text>
-                                    </Group>
-                                </Dropzone>
-
-                                
+                                <TextInput  radius='xl' size = 'md' required placeholder='Image Link' style={{
+                                margin: '10px 0px',
+                                width: '400px',
+                                position: 'absolute'
+                                }} withAsterisk {...form.getInputProps('image')}/>
                                 </Group>
                             </div>
                         </div>
@@ -185,7 +156,7 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
                                     }} size = 'xs' radius = 'xl' label={<p style={{color: 'white'}}>Select Activity</p>} placeholder='Activities' data = {props.activity} {...form.getInputProps('topicID')} />
                                     <Select classNames={{
                                         input: classes.input
-                                    }} size='xs' radius = 'xl' label={<p style={{color: 'white'}}>Party Type</p>} placeholder='Type' data = {[{value: 'private', label: 'Private'}, {value: 'public', label: 'Public'}]} {...form.getInputProps('isPublic')}/>
+                                    }} size='xs' radius = 'xl' label={<p style={{color: 'white'}}>Party Type</p>} placeholder='Type' data = {[{value: 'private', label: 'Private'}, {value: 'public', label: 'Public'}]} {...form.getInputProps('isPublic_string')}/>
                                     <div className={styles.tag}>
                                     <TextInput classNames={{
                                         input: classes.input
@@ -213,10 +184,10 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
                                         border: 'none'
                                     } }} size = 'xs' icon = {<CalendarIcon style={{
                                         marginLeft: '8px'
-                                    }} />} iconWidth = {20} radius='xl' placeholder="Pick Date" label= {<p style={{color: 'white'}}>Date</p>} onChange={(date:Date) => setDate(date)} value = {new Date()}/>
+                                    }} />} iconWidth = {20} radius='xl' placeholder="Pick Date" label= {<p style={{color: 'white'}}>Date</p>} onChange={(date:Date) => setDate(date)} />
                                     <NumberInput classNames={{
                                         input: classes.input
-                                    }} size='xs' placeholder="2" radius='xl' min = {2} max = {15} label = {<p style={{color: 'white'}}>Number of Participants</p>} {...form.getInputProps('maxPeople')}/>
+                                    }} size='xs' placeholder="2" radius='xl' min = {2} max = {15} label = {<p style={{color: 'white'}}>Number of Participants</p>} {...form.getInputProps('maxpeople')}/>
                                 </div>
                             </div>
                         </div>
@@ -243,7 +214,7 @@ const CreateNewParty = (props: CreateNewPartyProps) => {
                                 width: '360px',
                                 height: '220px',
                                 marginTop: '10px'
-                            }} {...form.getInputProps('privateDes')}/>
+                            }} {...form.getInputProps('privateDesc')}/>
                             <div style={{
                                 display: 'flex',
                                 flexDirection: 'row',
@@ -270,7 +241,7 @@ const NewParty = () => {
     const [activities, setActivities] = useState([]);
 
     function fetchActivity() {
-        axios.get('https://harty.onfirebyte.xyz/party/activitylist').then(res => {
+        axios.get('https://harty.onfirebyte.xyz/party/activitylist', {withCredentials: true}).then(res => {
             setActivities(res.data)
         })
     }
@@ -283,10 +254,10 @@ const NewParty = () => {
         console.log(activities)
     },[activities])
 
-    let actlist= activities.map(({id, topic}) => ({value: id,label: topic}))
+    let actlist = activities.map(({id, topic}) => ({value: id,label: topic}))
 
     return <>
-            {activities.length == 0 ? <div style={{color: 'white'}}>loading</div> : <CreateNewParty activity={actlist}/>}
+            {activities.length == 0 ? <div style={{color: 'white'}}>loading...</div> : <CreateNewParty activity={actlist}/>}
         </>
 
 }

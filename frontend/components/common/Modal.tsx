@@ -3,6 +3,7 @@ import { LockClosedIcon,LockOpenIcon,XMarkIcon} from '@heroicons/react/20/solid'
 import { StyleRegistry } from 'styled-jsx';
 import axios from 'axios';
 import {DateTime} from 'luxon';
+import { useRouter } from 'next/router';
 interface Carddto{
     id: number;
     title : string;
@@ -27,15 +28,17 @@ interface Props{
 
 
 const Modal=(props:Props)=>{
+    const router = useRouter();
     async function Onclickjoin(){
         try{
-            const message = await axios.post(`https://harty.onfirebyte.xyz/party/join/${props.data.id}`)
+            const message = await axios.post(`https://harty.onfirebyte.xyz/party/join/${props.data.id}`, props.data.id, {withCredentials: true})
             if(message.data.message  ==='join party successful'){
                 alert('Join party successful')
+                router.reload();
             }
         }
         catch(error){
-            console.log("error")
+            console.log(error)
         }
         }
         
@@ -86,7 +89,7 @@ const Modal=(props:Props)=>{
                 </div>
             <div className={style.right}>
                 <div className={style.close} onClick={()=>props.close()}>
-                    <XMarkIcon />
+                    <XMarkIcon style={{cursor: 'pointer'}} />
                 </div>
                 <div className={style.title}>{props.data.title}</div>
                 <div className={style.topic}>{props.data.topic}</div>
