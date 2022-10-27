@@ -3,7 +3,6 @@ import { Request, Response } from "express";
 import { CreateParty, JoinParty, PartiesDTO, PartyCardDTO, PartyRoomDTO } from "../dto/party.dto";
 import { partySchema } from "../common/partyValidator";
 import { ValidationError } from "yup";
-import { Category } from "@prisma/client";
 
 export const getOnePartyCard = async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);

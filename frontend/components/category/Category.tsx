@@ -17,7 +17,7 @@ const Category = (props: catProps) => {
             <div  className={styles.titleContainer} style = {{display : "flex",
                                                             justifyContent : "space-between",      
                                                             }}>
-                <button id = "game" className = {styles.button} onClick = {() => {props.onGameClick}}>ONLINE GAME</button>
+                <button id = "game" className = {styles.button} onClick = {() => {props.onGameClick()}}>ONLINE GAME</button>
                 <button id = "act" className = {styles.button} onClick = {() => {props.onActClick()}}>OUTDOOR ACTIVITIES</button>
             </div>
         </div>
