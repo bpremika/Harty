@@ -1,0 +1,107 @@
+.maincard{
+    background-color: #19284D;
+    display: flex;
+    flex-direction: row;
+    padding: 22px;
+    padding-top: 0px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.imagebox{
+    width: 411px;
+    height: 212px;
+    border-radius: 30px;
+    margin-bottom: 31px;
+    
+}
+.image{
+    border-radius : 30px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.middlebox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 22px;
+}
+.firstbox{
+    color: white;
+    size:14px;
+    font-weight: 400;
+    margin-top: 95px;
+    display: flex;
+    flex-direction: column;
+    gap:18px;
+}
+
+.property{
+    align-self: center;
+}
+.lastbox{
+    background-color: #0E0E24;
+    width: 382px;
+    height: 747px;
+    border-radius: 30px;
+    margin-top: 15px;
+}
+.allbox{
+    width: fit-content;
+    height: 882px;
+    border-radius: 30px;
+}
+
+.topic{
+    width: 1174px;
+    height: 121px;
+    background-color: #121B31;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.icon{
+    width:20px;
+    height:20px;
+    color: white;
+    display: flex;
+    align-self: center;
+    margin-right:8px;
+}
+.partystatus{
+    font-weight: 700;
+    font-size: 16px;
+    align-self: center;
+}
+
+
+.subtopic{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-left: 49px;
+    align-self: center;
+}
+.public{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    margin-right: 20px;
+}
+.title{
+    font-size: 32px;
+    font-weight: 500;
+}
+.topic2{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.chatim{
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
