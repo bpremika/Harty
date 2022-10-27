@@ -86,7 +86,7 @@ const Modal=(props:Props)=>{
                 </div>
             <div className={style.right}>
                 <div className={style.close} onClick={()=>props.close()}>
-                    <XMarkIcon />
+                    <XMarkIcon style={{cursor: 'pointer'}} />
                 </div>
                 <div className={style.title}>{props.data.title}</div>
                 <div className={style.topic}>{props.data.topic}</div>

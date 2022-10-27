@@ -55,11 +55,10 @@ const MyParty = () => {
                             Create New Party
                         </Button>
                     </div>
-                    <div className={styles.upcomming}>
-                        <div className={styles.upcommingcard}>
-                            <PartyCards path='party/myparty' />
-                        </div>
-                    </div>
+                <h2 style={{color: 'white', marginLeft: '20px', marginTop: '10px'}}>Joined Party</h2>
+                <div style={{position: 'absolute', height: '78vh', top: '64px', display: 'flex', flexDirection: 'column'}}>
+                    <PartyCards path='party/myparty' />
+                </div>
                 </div>
                 <Sidebar />
             </main>

@@ -62,3 +62,14 @@
 .show:hover{
     color: rgb(166, 166, 166);
 }
+
+.navbar {
+    height: 64px;
+    width: 100vw;
+    position: absolute;
+    background-color: #2B3B64;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
