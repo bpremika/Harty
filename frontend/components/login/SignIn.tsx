@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import Router, { useRouter } from "next/router";
 import React, { useCallback, useRef } from 'react';
 import styles from '../../styles/Signin.module.css'
@@ -20,7 +20,11 @@ const SignIn = () =>{
             console.log(res.data);
             Router.push('/');
           } catch (error) {
-            console.error(error);
+            console.log('error ocurred');
+            
+            if (error instanceof AxiosError){
+                alert(error.response?.data.message);
+            }
           }
     }
     return <>

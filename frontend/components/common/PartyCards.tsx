@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { CardnModal } from "./CardnModal";
+import styles from "../../styles/loading.module.css"
 
 interface Props{
     id: number;
@@ -46,7 +47,7 @@ const PartyCards = (props:PartyCardProps) =>{
     },[parties])
     return <>
     {
-        parties===null?<div style={{color: 'white'}}>loading...</div>:<CardnModal data={parties.parties}/>
+        parties===null?<div className = {styles.loader}></div>:<CardnModal data={parties.parties}/>
     }
     </>
 }
